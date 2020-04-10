@@ -1,4 +1,4 @@
-## Workshop Material: Introduction to Machine Learning with Apache Spark and Redis
+## Workshop Material: Introduction to Apache Spark and ElasticSearch
 
 ### About the Speaker
 Find me on Twitter: [@newfront](https://twitter.com/newfront)
@@ -9,26 +9,6 @@ About Twilio: [Twilio](https://twilio.com)
 1. Docker (at least 2 CPU cores and 8gb RAM)
 2. System Terminal (iTerm, Terminal, etc)
 3. Working Web Browser (Chrome or Firefox)
-
-### Technologies Used
-1. [Apache Zeppelin](https://zeppelin.apache.org/docs/latest/interpreter/spark.html)
-2. [Apache Spark](http://spark.apache.org/)
-3. [Redis](https://redis.io/)
-
-#### Spark 2.4.5
-- http://mirror.metrocast.net/apache/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
-- (222 MB)
-
-#### Redis Docker Hub (v5.0.7)
-https://hub.docker.com/_/redis/
-
-#### Spark Redis (v2.4.0)
-https://github.com/RedisLabs/spark-redis
-
-### Datasets
-* Netflix Movies and Shows: https://www.kaggle.com/shivamb/netflix-shows
-* House Prices: https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data
-* GoodReads Books: https://www.kaggle.com/jealousleopard/goodreadsbooks
 
 ### Docker
 Install Docker Desktop (https://www.docker.com/products/docker-desktop)
@@ -47,24 +27,39 @@ Additional Docker Resources:
 3. `./run.sh install`
 4. `./run.sh start`
 
+Note: `./run.sh install 2.4.5 7.3.2` will install Spark 2.4.5 and ElasticSearch/Kibana for ES 7.3.2
+
 ## Checking Zeppelin and Updating Zeppelin
 1. The **Main Application** should now be running at http://localhost:8080/
-2. `docker exec -it redis5 redis-cli` should show `127.0.0.1:6379>` this should be a new install. Try inputting `info` to see the redid-server configuration.
 
 ### Update the Zeppelin Spark Interpreter Runtime
 1. Go to http://localhost:8080/#/interpreter on your Web Browser
 2. Search for `spark` in the `Search Interpreters` input field.
 3. Click the `edit` button to initiate editing mode.
 
-#### Update the Properties (under the properties section)
-Add the following key/values.
-1. **spark.redis.host** redis5
-2. **spark.redis.port** 6379
-
 Updated the following key/values
 1. **spark.cores.max** 2
 2. **spark.executor.memory** 8g
 
-#### Update the Dependencies (under the dependencies section)
-1. Add `com.redislabs:spark-redis:2.4.0`
-2. Click `Save` and these settings will be applied to the Zeppelin Runtime.
+#### Reference
+Note: These links are here for reference only. You don't need to download anything manually, the `run.sh` script will do everything for you.
+
+### These are the Technologies Used in this Workshop (run.sh will install everything)
+1. [Apache Zeppelin](https://zeppelin.apache.org/docs/latest/interpreter/spark.html)
+2. [Apache Spark](http://spark.apache.org/)
+3. [ElasticSearch](https://www.elastic.co/elasticsearch/)
+
+#### Spark 2.4.5
+- http://mirror.cc.columbia.edu/pub/software/apache/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
+- (222 MB)
+
+#### ElasticSearch Docker Hub (v7.3.2)
+https://hub.docker.com/_/elasticsearch
+https://hub.docker.com/_/kibana
+
+#### ElasticSearch Hadoop (v7.3.2)
+https://www.elastic.co/guide/en/elasticsearch/hadoop/current/spark.html
+
+### Datasets
+* Netflix Movies and Shows: https://www.kaggle.com/shivamb/netflix-shows
+* GoodReads Books: https://www.kaggle.com/jealousleopard/goodreadsbooks
