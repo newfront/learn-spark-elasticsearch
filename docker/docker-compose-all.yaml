@@ -1,0 +1,35 @@
+version: '3' 
+services:
+  zeppelin:
+    image: apache/zeppelin:0.8.2
+    container_name: zeppelin
+    volumes:
+      - ${PWD}/notebook:/notebook
+      - ${PWD}/logs:/logs
+      - ${PWD}/data:/learn
+      - ${PWD}/spark-2.4.5:/spark
+    environment:
+      - SPARK_HOME=/spark
+      - SPARK_SUBMIT_OPTIONS=--packages com.redislabs:spark-redis:2.4.1
+      - ZEPPELIN_LOG_DIR=/logs/
+      - ZEPPELIN_NOTEBOOK_DIR=/notebook
+      - ZEPPELIN_ADDR=0.0.0.0
+      - ZEPPELIN_SPARK_MAXRESULT=10000
+      - ZEPPELIN_INTERPRETER_OUTPUT_LIMIT=204800
+    healthcheck:
+      interval: 5s
+      retries: 10
+    ports:
+      - 8080:8080
+      - 4040:4040
+      - 4041:4041
+    depends_on:
+      - redis5
+    networks:
+      - learnml
+    hostname: "zeppelin"
+
+networks:
+  learnml:
+    external:
+      name: learnml

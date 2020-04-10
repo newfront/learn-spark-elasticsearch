@@ -1,0 +1,70 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark\n\nspark.sparkContext.getConf.toDebugString",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-10 00:56:43.456",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res1: String \u003d\nmaster\u003dlocal[*]\nspark.app.id\u003dlocal-1586480229804\nspark.app.name\u003dZeppelin\nspark.cores.max\u003d4\nspark.driver.extraClassPath\u003d:/zeppelin/interpreter/spark/*:/zeppelin/lib/interpreter/*::/zeppelin/interpreter/spark/spark-interpreter-0.8.2.jar\nspark.driver.extraJavaOptions\u003d -Dfile.encoding\u003dUTF-8 -Dlog4j.configuration\u003dfile:///zeppelin/conf/log4j.properties -Dzeppelin.log.file\u003d/logs//zeppelin-interpreter-spark--zeppelin.log\nspark.driver.host\u003dzeppelin\nspark.driver.port\u003d35639\nspark.es.batch.size.bytes\u003d\"1mb\"\nspark.es.batch.size.entries\u003d1000\nspark.es.batch.write.refresh\u003dtrue\nspark.es.batch.write.retry.count\u003d3\nspark.es.batch.write.retry.wait\u003d\"5s\"\nspark.es.nodes\u003d\"elasticsearch\"\nspark.es.nodes.client.only\u003dfalse\nspark.es.nodes.data.only\u003dfalse\nspark.es.nodes.discovery\u003dfalse\nspark.es.nodes.in..."
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1586480183643_1901874113",
+      "id": "20200410-005623_2069789251",
+      "dateCreated": "2020-04-10 00:56:23.643",
+      "dateStarted": "2020-04-10 00:56:43.496",
+      "dateFinished": "2020-04-10 00:57:12.586",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-10 00:56:43.462",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1586480203461_-958678481",
+      "id": "20200410-005643_220077392",
+      "dateCreated": "2020-04-10 00:56:43.461",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "1-1-Getting-Started",
+  "id": "2F5BK9H7F",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
