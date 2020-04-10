@@ -23,7 +23,7 @@ Additional Docker Resources:
 
 ## Installation
 1. Install Docker (See Docker above)
-2. Once Docker is installed. Open up your terminal application and `cd /spark-intro-to-ml/docker`
+2. Once Docker is installed. Open up your terminal application and `cd /learn-spark-elasticsearch/docker`
 3. `./run.sh install`
 4. `./run.sh start`
 
