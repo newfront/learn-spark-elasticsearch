@@ -10,7 +10,7 @@ services:
       - ${PWD}/spark-2.4.5:/spark
     environment:
       - SPARK_HOME=/spark
-      - SPARK_SUBMIT_OPTIONS=--packages com.redislabs:spark-redis:2.4.1
+      - SPARK_SUBMIT_OPTIONS=--packages org.elasticsearch:elasticsearch-hadoop:7.3.2
       - ZEPPELIN_LOG_DIR=/logs/
       - ZEPPELIN_NOTEBOOK_DIR=/notebook
       - ZEPPELIN_ADDR=0.0.0.0
@@ -23,8 +23,6 @@ services:
       - 8080:8080
       - 4040:4040
       - 4041:4041
-    depends_on:
-      - redis5
     networks:
       - learnml
     hostname: "zeppelin"

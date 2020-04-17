@@ -3,7 +3,7 @@
     {
       "text": "%spark\n\nspark.sparkContext.getConf.toDebugString",
       "user": "anonymous",
-      "dateUpdated": "2020-04-10 00:56:43.456",
+      "dateUpdated": "2020-04-17 20:57:27.977",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -26,7 +26,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "res1: String \u003d\nmaster\u003dlocal[*]\nspark.app.id\u003dlocal-1586480229804\nspark.app.name\u003dZeppelin\nspark.cores.max\u003d4\nspark.driver.extraClassPath\u003d:/zeppelin/interpreter/spark/*:/zeppelin/lib/interpreter/*::/zeppelin/interpreter/spark/spark-interpreter-0.8.2.jar\nspark.driver.extraJavaOptions\u003d -Dfile.encoding\u003dUTF-8 -Dlog4j.configuration\u003dfile:///zeppelin/conf/log4j.properties -Dzeppelin.log.file\u003d/logs//zeppelin-interpreter-spark--zeppelin.log\nspark.driver.host\u003dzeppelin\nspark.driver.port\u003d35639\nspark.es.batch.size.bytes\u003d\"1mb\"\nspark.es.batch.size.entries\u003d1000\nspark.es.batch.write.refresh\u003dtrue\nspark.es.batch.write.retry.count\u003d3\nspark.es.batch.write.retry.wait\u003d\"5s\"\nspark.es.nodes\u003d\"elasticsearch\"\nspark.es.nodes.client.only\u003dfalse\nspark.es.nodes.data.only\u003dfalse\nspark.es.nodes.discovery\u003dfalse\nspark.es.nodes.in..."
+            "data": "res1: String \u003d\nmaster\u003dlocal[*]\nspark.app.id\u003dlocal-1587157065473\nspark.app.name\u003dZeppelin\nspark.cores.max\u003d4\nspark.driver.extraClassPath\u003d:/zeppelin/interpreter/spark/*:/zeppelin/lib/interpreter/*::/zeppelin/interpreter/spark/spark-interpreter-0.8.2.jar\nspark.driver.extraJavaOptions\u003d -Dfile.encoding\u003dUTF-8 -Dlog4j.configuration\u003dfile:///zeppelin/conf/log4j.properties -Dzeppelin.log.file\u003d/logs//zeppelin-interpreter-spark--zeppelin.log\nspark.driver.host\u003dzeppelin\nspark.driver.port\u003d44087\nspark.es.batch.size.bytes\u003d\"1mb\"\nspark.es.batch.size.entries\u003d1000\nspark.es.batch.write.refresh\u003dtrue\nspark.es.batch.write.retry.count\u003d3\nspark.es.batch.write.retry.wait\u003d\"5s\"\nspark.es.nodes\u003d\"elasticsearch\"\nspark.es.nodes.client.only\u003dfalse\nspark.es.nodes.data.only\u003dfalse\nspark.es.nodes.discovery\u003dfalse\nspark.es.nodes.in..."
           }
         ]
       },
@@ -34,24 +34,699 @@
       "jobName": "paragraph_1586480183643_1901874113",
       "id": "20200410-005623_2069789251",
       "dateCreated": "2020-04-10 00:56:23.643",
-      "dateStarted": "2020-04-10 00:56:43.496",
-      "dateFinished": "2020-04-10 00:57:12.586",
+      "dateStarted": "2020-04-17 20:57:28.151",
+      "dateFinished": "2020-04-17 20:57:48.995",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\n",
+      "text": "%md\n## Create a case class which can be used as our Sample Data for ElasticSearch Write\n~~~\nSnack - people like to snack. Snack is a primitive that can be used to log snacks. This is also kind of like an Event!\n~~~",
       "user": "anonymous",
-      "dateUpdated": "2020-04-10 00:56:43.462",
+      "dateUpdated": "2020-04-17 19:50:28.888",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate a case class which can be used as our Sample Data for ElasticSearch Write\u003c/h2\u003e\n\u003cpre\u003e\u003ccode\u003eSnack - people like to snack. Snack is a primitive that can be used to log snacks. This is also kind of like an Event!\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587152776642_-1666468804",
+      "id": "20200417-194616_183545598",
+      "dateCreated": "2020-04-17 19:46:16.642",
+      "dateStarted": "2020-04-17 19:50:28.888",
+      "dateFinished": "2020-04-17 19:50:28.917",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport java.sql.Timestamp\ncase class Snack(timestamp: Timestamp, name: String, quantity: Int, personId: Int)",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:01:50.049",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import java.sql.Timestamp\ndefined class Snack\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1586480203461_-958678481",
+      "id": "20200410-005643_220077392",
+      "dateCreated": "2020-04-10 00:56:43.461",
+      "dateStarted": "2020-04-17 21:01:50.092",
+      "dateFinished": "2020-04-17 21:01:50.796",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Create a bunch of Snacks that we can feed into our DataFrame\n\nUse a Scala Sequence (Seq) of Snacks in order to use the `spark: SparkSession` helper methods to convert this to a Dataset[Snack]",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 19:54:11.172",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate a bunch of Snacks that we can feed into our DataFrame\u003c/h2\u003e\n\u003cp\u003eUse a Scala Sequence (Seq) of Snacks in order to use the \u003ccode\u003espark: SparkSession\u003c/code\u003e helper methods to convert this to a Dataset[Snack]\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587153159636_1233604255",
+      "id": "20200417-195239_424201257",
+      "dateCreated": "2020-04-17 19:52:39.636",
+      "dateStarted": "2020-04-17 19:54:11.181",
+      "dateFinished": "2020-04-17 19:54:11.197",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport java.util.Random\n\nval users \u003d Seq(100,101,102,103,104,105,106)\n\nval snacks \u003d Seq(\"apple\", \"chips\", \"yogurt\", \"bread\", \"cake\", \"tart\")\nval snacksLen \u003d snacks.length-1\nval startingTime \u003d Timestamp.valueOf(\"2020-04-17 12:00:00\")\n\n\nval generator \u003d new Random(100L);\n\ndef randomSnack(): String \u003d {\n  snacks(Math.round(generator.nextInt(snacksLen)))\n}\n\ndef randomQuantity(num: Int): Int \u003d {\n  Math.round(generator.nextInt(num))\n}\n\ndef randomSnacking(user: Int): Seq[Snack] \u003d {\n  (1 to 100).map(index \u003d\u003e {\n    val secondsOffset \u003d Math.round(generator.nextInt(100*index))\n    val ts \u003d Timestamp.from(startingTime.toInstant.plusSeconds(secondsOffset))\n    Snack(ts, randomSnack(), randomQuantity(index), user)\n  })\n}\n\nval snackingBehavior \u003d users.map(randomSnacking).flatten\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:01:52.876",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import java.util.Random\nusers: Seq[Int] \u003d List(100, 101, 102, 103, 104, 105, 106)\nsnacks: Seq[String] \u003d List(apple, chips, yogurt, bread, cake, tart)\nsnacksLen: Int \u003d 5\nstartingTime: java.sql.Timestamp \u003d 2020-04-17 12:00:00.0\ngenerator: java.util.Random \u003d java.util.Random@3e3c0874\nrandomSnack: ()String\nrandomQuantity: (num: Int)Int\nrandomSnacking: (user: Int)Seq[Snack]\nsnackingBehavior: Seq[Snack] \u003d List(Snack(2020-04-17 12:00:15.0,apple,0,100), Snack(2020-04-17 12:03:08.0,chips,0,100), Snack(2020-04-17 12:03:56.0,bread,1,100), Snack(2020-04-17 12:01:53.0,yogurt,0,100), Snack(2020-04-17 12:04:16.0,yogurt,2,100), Snack(2020-04-17 12:07:39.0,apple,0,100), Snack(2020-04-17 12:02:53.0,cake,0,100), Snack(2020-04-17 12:00:28.0,apple,4,100), Snack(2020-04-17 12:09:27.0,chips,4,100), Snack(2020..."
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587153110697_-149435667",
+      "id": "20200417-195150_1405804038",
+      "dateCreated": "2020-04-17 19:51:50.698",
+      "dateStarted": "2020-04-17 21:01:52.908",
+      "dateFinished": "2020-04-17 21:01:53.577",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nval initialSnacks \u003d spark.createDataset[Snack](snackingBehavior)",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:01:57.955",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "initialSnacks: org.apache.spark.sql.Dataset[Snack] \u003d [timestamp: timestamp, name: string ... 2 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587154063745_1261423387",
+      "id": "20200417-200743_919951208",
+      "dateCreated": "2020-04-17 20:07:43.745",
+      "dateStarted": "2020-04-17 21:01:57.995",
+      "dateFinished": "2020-04-17 21:02:01.158",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\ninitialSnacks.createOrReplaceTempView(\"snacks\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:02:04.386",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1587154351412_2120679813",
+      "id": "20200417-201231_323133645",
+      "dateCreated": "2020-04-17 20:12:31.412",
+      "dateStarted": "2020-04-17 21:02:04.419",
+      "dateFinished": "2020-04-17 21:02:05.398",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect * from snacks",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:02:07.617",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "timestamp",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "name",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "quantity",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "personId",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1.0,
+                      "paginationPageSize": 250.0
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "timestamp": "string",
+                      "name": "string",
+                      "quantity": "string",
+                      "personId": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "timestamp\tname\tquantity\tpersonId\n2020-04-17 12:00:15.0\tapple\t0\t100\n2020-04-17 12:03:08.0\tchips\t0\t100\n2020-04-17 12:03:56.0\tbread\t1\t100\n2020-04-17 12:01:53.0\tyogurt\t0\t100\n2020-04-17 12:04:16.0\tyogurt\t2\t100\n2020-04-17 12:07:39.0\tapple\t0\t100\n2020-04-17 12:02:53.0\tcake\t0\t100\n2020-04-17 12:00:28.0\tapple\t4\t100\n2020-04-17 12:09:27.0\tchips\t4\t100\n2020-04-17 12:04:52.0\tapple\t8\t100\n2020-04-17 12:07:54.0\tapple\t5\t100\n2020-04-17 12:14:33.0\tcake\t2\t100\n2020-04-17 12:16:27.0\tbread\t9\t100\n2020-04-17 12:07:09.0\tapple\t2\t100\n2020-04-17 12:08:59.0\tchips\t1\t100\n2020-04-17 12:00:02.0\tapple\t14\t100\n2020-04-17 12:11:02.0\tapple\t6\t100\n2020-04-17 12:05:36.0\tcake\t4\t100\n2020-04-17 12:19:19.0\tapple\t14\t100\n2020-04-17 12:22:32.0\tapple\t8\t100\n2020-04-17 12:10:46.0\tyogurt\t14\t100\n2020-04-17 12:02:34.0\tbread\t6\t100\n2020-04-17 12:19:13.0\tyogurt\t13\t100\n2020-04-17 12:11:11.0\tapple\t8\t100\n2020-04-17 12:25:00.0\tchips\t24\t100\n2020-04-17 12:19:23.0\tyogurt\t12\t100\n2020-04-17 12:38:07.0\tbread\t16\t100\n2020-04-17 12:22:06.0\tbread\t17\t100\n2020-04-17 12:15:34.0\tchips\t28\t100\n2020-04-17 12:35:12.0\tbread\t8\t100\n2020-04-17 12:50:26.0\tbread\t11\t100\n2020-04-17 12:02:33.0\tcake\t22\t100\n2020-04-17 12:15:59.0\tchips\t19\t100\n2020-04-17 12:14:12.0\tapple\t3\t100\n2020-04-17 12:25:21.0\tcake\t2\t100\n2020-04-17 12:24:22.0\tbread\t28\t100\n2020-04-17 12:34:44.0\tcake\t2\t100\n2020-04-17 12:21:18.0\tapple\t10\t100\n2020-04-17 13:03:28.0\tyogurt\t12\t100\n2020-04-17 13:01:37.0\tchips\t4\t100\n2020-04-17 12:02:19.0\tyogurt\t5\t100\n2020-04-17 12:04:48.0\tyogurt\t16\t100\n2020-04-17 12:46:09.0\tbread\t12\t100\n2020-04-17 13:08:20.0\tbread\t24\t100\n2020-04-17 12:02:29.0\tchips\t20\t100\n2020-04-17 13:03:25.0\tchips\t15\t100\n2020-04-17 12:59:43.0\tchips\t26\t100\n2020-04-17 13:19:26.0\tbread\t10\t100\n2020-04-17 12:48:19.0\tchips\t13\t100\n2020-04-17 12:56:37.0\tyogurt\t12\t100\n2020-04-17 12:22:39.0\tchips\t40\t100\n2020-04-17 12:31:18.0\tcake\t23\t100\n2020-04-17 13:02:33.0\tyogurt\t29\t100\n2020-04-17 12:06:16.0\tbread\t20\t100\n2020-04-17 12:16:19.0\tapple\t31\t100\n2020-04-17 12:08:21.0\tapple\t39\t100\n2020-04-17 13:07:10.0\tcake\t53\t100\n2020-04-17 12:06:28.0\tyogurt\t52\t100\n2020-04-17 12:41:39.0\tyogurt\t3\t100\n2020-04-17 13:33:58.0\tapple\t14\t100\n2020-04-17 12:46:32.0\tapple\t49\t100\n2020-04-17 12:30:20.0\tcake\t7\t100\n2020-04-17 12:44:39.0\tyogurt\t38\t100\n2020-04-17 13:42:27.0\tbread\t20\t100\n2020-04-17 13:18:08.0\tchips\t17\t100\n2020-04-17 13:05:01.0\tbread\t52\t100\n2020-04-17 12:07:55.0\tbread\t64\t100\n2020-04-17 13:24:37.0\tchips\t22\t100\n2020-04-17 12:40:38.0\tcake\t56\t100\n2020-04-17 13:25:35.0\tcake\t54\t100\n2020-04-17 12:14:53.0\tbread\t70\t100\n2020-04-17 12:00:48.0\tyogurt\t31\t100\n2020-04-17 13:35:10.0\tbread\t44\t100\n2020-04-17 12:32:13.0\tyogurt\t68\t100\n2020-04-17 12:26:05.0\tchips\t13\t100\n2020-04-17 12:18:24.0\tapple\t75\t100\n2020-04-17 12:12:15.0\tcake\t47\t100\n2020-04-17 13:01:46.0\tchips\t57\t100\n2020-04-17 12:28:35.0\tchips\t24\t100\n2020-04-17 13:06:36.0\tchips\t63\t100\n2020-04-17 13:03:14.0\tapple\t62\t100\n2020-04-17 12:56:18.0\tyogurt\t67\t100\n2020-04-17 13:47:06.0\tchips\t62\t100\n2020-04-17 13:55:26.0\tcake\t52\t100\n2020-04-17 12:29:48.0\tbread\t16\t100\n2020-04-17 12:07:22.0\tapple\t46\t100\n2020-04-17 13:38:14.0\tcake\t73\t100\n2020-04-17 12:00:36.0\tbread\t29\t100\n2020-04-17 13:05:57.0\tcake\t87\t100\n2020-04-17 13:51:24.0\tbread\t38\t100\n2020-04-17 13:44:04.0\tapple\t87\t100\n2020-04-17 14:20:30.0\tyogurt\t63\t100\n2020-04-17 13:12:56.0\tchips\t48\t100\n2020-04-17 14:25:13.0\tchips\t48\t100\n2020-04-17 12:00:51.0\tcake\t48\t100\n2020-04-17 13:35:24.0\tcake\t84\t100\n2020-04-17 14:30:11.0\tapple\t8\t100\n2020-04-17 12:17:32.0\tchips\t15\t100\n2020-04-17 12:23:46.0\tchips\t87\t100\n2020-04-17 12:46:51.0\tchips\t71\t100\n2020-04-17 12:01:04.0\tbread\t0\t101\n2020-04-17 12:03:13.0\tcake\t0\t101\n2020-04-17 12:04:13.0\tcake\t1\t101\n2020-04-17 12:02:29.0\tyogurt\t1\t101\n2020-04-17 12:05:15.0\tapple\t2\t101\n2020-04-17 12:05:19.0\tapple\t4\t101\n2020-04-17 12:09:32.0\tcake\t3\t101\n2020-04-17 12:11:07.0\tbread\t5\t101\n2020-04-17 12:07:52.0\tyogurt\t2\t101\n2020-04-17 12:02:16.0\tcake\t0\t101\n2020-04-17 12:09:54.0\tbread\t2\t101\n2020-04-17 12:17:59.0\tchips\t5\t101\n2020-04-17 12:20:41.0\tchips\t10\t101\n2020-04-17 12:12:43.0\tcake\t3\t101\n2020-04-17 12:17:12.0\tapple\t1\t101\n2020-04-17 12:14:34.0\tyogurt\t14\t101\n2020-04-17 12:11:21.0\tchips\t5\t101\n2020-04-17 12:17:39.0\tchips\t17\t101\n2020-04-17 12:27:42.0\tyogurt\t1\t101\n2020-04-17 12:23:34.0\tcake\t8\t101\n2020-04-17 12:17:08.0\tyogurt\t8\t101\n2020-04-17 12:35:51.0\tchips\t6\t101\n2020-04-17 12:05:08.0\tyogurt\t21\t101\n2020-04-17 12:27:46.0\tyogurt\t3\t101\n2020-04-17 12:29:09.0\tapple\t21\t101\n2020-04-17 12:23:02.0\tapple\t11\t101\n2020-04-17 12:02:18.0\tyogurt\t6\t101\n2020-04-17 12:27:44.0\tapple\t7\t101\n2020-04-17 12:02:42.0\tbread\t11\t101\n2020-04-17 12:35:26.0\tcake\t24\t101\n2020-04-17 12:51:10.0\tbread\t14\t101\n2020-04-17 12:15:32.0\tbread\t20\t101\n2020-04-17 12:53:39.0\tbread\t18\t101\n2020-04-17 12:24:40.0\tapple\t2\t101\n2020-04-17 12:29:59.0\tyogurt\t10\t101\n2020-04-17 12:31:40.0\tbread\t8\t101\n2020-04-17 12:38:19.0\tyogurt\t10\t101\n2020-04-17 12:53:23.0\tbread\t8\t101\n2020-04-17 12:58:19.0\tapple\t22\t101\n2020-04-17 12:44:30.0\tcake\t15\t101\n2020-04-17 12:39:09.0\tapple\t33\t101\n2020-04-17 13:07:46.0\tbread\t37\t101\n2020-04-17 12:55:37.0\tcake\t16\t101\n2020-04-17 12:58:03.0\tcake\t17\t101\n2020-04-17 12:40:42.0\tyogurt\t3\t101\n2020-04-17 12:35:56.0\tapple\t35\t101\n2020-04-17 12:51:01.0\tapple\t19\t101\n2020-04-17 13:19:18.0\tapple\t19\t101\n2020-04-17 12:46:13.0\tyogurt\t16\t101\n2020-04-17 12:08:47.0\tyogurt\t5\t101\n2020-04-17 12:43:38.0\tyogurt\t7\t101\n2020-04-17 12:06:49.0\tcake\t31\t101\n2020-04-17 12:29:35.0\tbread\t34\t101\n2020-04-17 13:23:45.0\tcake\t18\t101\n2020-04-17 12:34:34.0\tapple\t42\t101\n2020-04-17 12:33:17.0\tcake\t20\t101\n2020-04-17 12:46:25.0\tyogurt\t15\t101\n2020-04-17 13:19:00.0\tapple\t4\t101\n2020-04-17 12:47:25.0\tbread\t8\t101\n2020-04-17 13:34:35.0\tapple\t6\t101\n2020-04-17 12:02:36.0\tyogurt\t17\t101\n2020-04-17 13:29:33.0\tcake\t12\t101\n2020-04-17 12:53:39.0\tbread\t38\t101\n2020-04-17 13:01:16.0\tyogurt\t37\t101\n2020-04-17 13:42:51.0\tbread\t58\t101\n2020-04-17 13:06:48.0\tchips\t14\t101\n2020-04-17 12:35:12.0\tchips\t61\t101\n2020-04-17 12:42:25.0\tyogurt\t42\t101\n2020-04-17 13:51:33.0\tapple\t35\t101\n2020-04-17 12:34:19.0\tyogurt\t61\t101\n2020-04-17 12:47:30.0\tapple\t4\t101\n2020-04-17 12:40:40.0\tcake\t17\t101\n2020-04-17 12:45:58.0\tcake\t57\t101\n2020-04-17 12:16:36.0\tyogurt\t49\t101\n2020-04-17 12:34:23.0\tyogurt\t7\t101\n2020-04-17 13:04:52.0\tchips\t58\t101\n2020-04-17 12:53:20.0\tchips\t13\t101\n2020-04-17 12:59:28.0\tbread\t75\t101\n2020-04-17 13:51:13.0\tchips\t44\t101\n2020-04-17 13:47:28.0\tbread\t26\t101\n2020-04-17 13:17:35.0\tyogurt\t28\t101\n2020-04-17 12:42:43.0\tyogurt\t51\t101\n2020-04-17 13:51:02.0\tbread\t13\t101\n2020-04-17 14:18:00.0\tchips\t7\t101\n2020-04-17 14:01:26.0\tcake\t51\t101\n2020-04-17 13:02:38.0\tbread\t71\t101\n2020-04-17 13:48:25.0\tapple\t50\t101\n2020-04-17 12:06:36.0\tchips\t21\t101\n2020-04-17 13:34:42.0\tchips\t78\t101\n2020-04-17 12:57:45.0\tyogurt\t41\t101\n2020-04-17 12:30:16.0\tchips\t49\t101\n2020-04-17 13:38:34.0\tcake\t36\t101\n2020-04-17 12:49:25.0\tcake\t3\t101\n2020-04-17 12:45:18.0\tyogurt\t9\t101\n2020-04-17 13:07:21.0\tyogurt\t18\t101\n2020-04-17 12:53:02.0\tcake\t0\t101\n2020-04-17 14:20:55.0\tbread\t78\t101\n2020-04-17 13:51:42.0\tchips\t30\t101\n2020-04-17 13:51:15.0\tchips\t8\t101\n2020-04-17 13:20:49.0\tbread\t39\t101\n2020-04-17 12:01:25.0\tbread\t0\t102\n2020-04-17 12:01:07.0\tchips\t1\t102\n2020-04-17 12:00:01.0\tcake\t0\t102\n2020-04-17 12:03:31.0\tchips\t1\t102\n2020-04-17 12:01:59.0\tbread\t1\t102\n2020-04-17 12:01:15.0\tapple\t1\t102\n2020-04-17 12:07:10.0\tbread\t3\t102\n2020-04-17 12:11:59.0\tapple\t6\t102\n2020-04-17 12:06:20.0\tapple\t4\t102\n2020-04-17 12:08:21.0\tbread\t1\t102\n2020-04-17 12:05:08.0\tcake\t1\t102\n2020-04-17 12:11:46.0\tbread\t2\t102\n2020-04-17 12:12:05.0\tbread\t6\t102\n2020-04-17 12:16:02.0\tapple\t12\t102\n2020-04-17 12:10:03.0\tapple\t14\t102\n2020-04-17 12:05:51.0\tyogurt\t11\t102\n2020-04-17 12:22:14.0\tyogurt\t2\t102\n2020-04-17 12:14:18.0\tchips\t13\t102\n2020-04-17 12:07:27.0\tyogurt\t10\t102\n2020-04-17 12:08:10.0\tcake\t13\t102\n2020-04-17 12:24:33.0\tbread\t13\t102\n2020-04-17 12:34:33.0\tchips\t1\t102\n2020-04-17 12:05:22.0\tchips\t13\t102\n2020-04-17 12:06:31.0\tchips\t6\t102\n2020-04-17 12:05:22.0\tyogurt\t13\t102\n2020-04-17 12:24:21.0\tapple\t25\t102\n2020-04-17 12:03:28.0\tapple\t20\t102\n2020-04-17 12:33:59.0\tyogurt\t21\t102\n2020-04-17 12:10:49.0\tapple\t8\t102\n2020-04-17 12:13:50.0\tbread\t20\t102\n2020-04-17 12:41:09.0\tyogurt\t14\t102\n2020-04-17 12:18:30.0\tyogurt\t13\t102\n2020-04-17 12:13:59.0\tbread\t0\t102\n2020-04-17 12:50:09.0\tcake\t28\t102\n2020-04-17 12:28:53.0\tyogurt\t2\t102\n2020-04-17 12:51:56.0\tyogurt\t12\t102\n2020-04-17 12:46:15.0\tapple\t18\t102\n2020-04-17 12:16:50.0\tcake\t28\t102\n2020-04-17 13:01:30.0\tapple\t30\t102\n2020-04-17 12:19:02.0\tcake\t32\t102\n2020-04-17 12:57:25.0\tbread\t30\t102\n2020-04-17 12:22:53.0\tchips\t8\t102\n2020-04-17 12:06:15.0\tchips\t18\t102\n2020-04-17 12:45:45.0\tcake\t6\t102\n2020-04-17 12:13:49.0\tapple\t29\t102\n2020-04-17 12:53:37.0\tbread\t20\t102\n2020-04-17 13:16:13.0\tbread\t43\t102\n2020-04-17 12:35:22.0\tyogurt\t0\t102\n2020-04-17 12:53:26.0\tyogurt\t19\t102\n2020-04-17 12:56:33.0\tbread\t5\t102\n2020-04-17 12:43:27.0\tapple\t39\t102\n2020-04-17 13:06:45.0\tbread\t21\t102\n2020-04-17 13:28:02.0\tyogurt\t3\t102\n2020-04-17 12:43:03.0\tchips\t46\t102\n2020-04-17 13:31:16.0\tbread\t43\t102\n2020-04-17 13:26:08.0\tapple\t23\t102\n2020-04-17 12:06:34.0\tcake\t54\t102\n2020-04-17 13:03:50.0\tyogurt\t45\t102\n2020-04-17 13:13:57.0\tbread\t12\t102\n2020-04-17 13:26:26.0\tcake\t1\t102\n2020-04-17 12:50:51.0\tchips\t22\t102\n2020-04-17 13:11:38.0\tchips\t49\t102\n2020-04-17 12:12:01.0\tcake\t59\t102\n2020-04-17 12:14:54.0\tbread\t39\t102\n2020-04-17 13:00:59.0\tyogurt\t20\t102\n2020-04-17 12:05:12.0\tyogurt\t35\t102\n2020-04-17 12:34:04.0\tcake\t21\t102\n2020-04-17 12:52:31.0\tcake\t19\t102\n2020-04-17 13:27:03.0\tcake\t62\t102\n2020-04-17 13:26:30.0\tapple\t62\t102\n2020-04-17 13:14:04.0\tyogurt\t33\t102\n2020-04-17 13:36:39.0\tyogurt\t34\t102\n2020-04-17 13:34:31.0\tbread\t34\t102\n2020-04-17 13:43:58.0\tcake\t64\t102\n2020-04-17 12:12:08.0\tcake\t36\t102\n2020-04-17 13:42:56.0\tchips\t32\t102\n2020-04-17 13:09:20.0\tyogurt\t26\t102\n2020-04-17 13:48:27.0\tyogurt\t8\t102\n2020-04-17 12:07:07.0\tcake\t4\t102\n2020-04-17 13:39:34.0\tchips\t77\t102\n2020-04-17 12:59:18.0\tcake\t5\t102\n2020-04-17 14:10:22.0\tchips\t31\t102\n2020-04-17 13:28:33.0\tyogurt\t16\t102\n2020-04-17 12:06:14.0\tbread\t18\t102\n2020-04-17 14:16:33.0\tchips\t49\t102\n2020-04-17 14:03:35.0\tchips\t30\t102\n2020-04-17 14:20:01.0\tchips\t69\t102\n2020-04-17 13:08:32.0\tchips\t32\t102\n2020-04-17 13:09:05.0\tbread\t67\t102\n2020-04-17 12:01:08.0\tapple\t47\t102\n2020-04-17 13:49:30.0\tapple\t56\t102\n2020-04-17 13:17:33.0\tbread\t0\t102\n2020-04-17 14:24:26.0\tcake\t16\t102\n2020-04-17 14:22:33.0\tbread\t59\t102\n2020-04-17 12:01:56.0\tchips\t85\t102\n2020-04-17 12:50:28.0\tcake\t46\t102\n2020-04-17 13:59:02.0\tcake\t84\t102\n2020-04-17 12:16:04.0\tapple\t18\t102\n2020-04-17 14:17:47.0\tapple\t63\t102\n2020-04-17 13:53:11.0\tbread\t0\t102\n2020-04-17 12:01:15.0\tapple\t0\t103\n2020-04-17 12:02:34.0\tapple\t1\t103\n2020-04-17 12:02:55.0\tcake\t2\t103\n2020-04-17 12:01:49.0\tapple\t2\t103\n2020-04-17 12:04:30.0\tyogurt\t4\t103\n2020-04-17 12:01:06.0\tapple\t1\t103\n2020-04-17 12:01:20.0\tapple\t1\t103\n2020-04-17 12:12:20.0\tbread\t1\t103\n2020-04-17 12:01:34.0\tapple\t3\t103\n2020-04-17 12:03:32.0\tchips\t9\t103\n2020-04-17 12:05:42.0\tyogurt\t5\t103\n2020-04-17 12:18:37.0\tyogurt\t2\t103\n2020-04-17 12:17:38.0\tapple\t4\t103\n2020-04-17 12:22:55.0\tcake\t5\t103\n2020-04-17 12:04:25.0\tchips\t5\t103\n2020-04-17 12:19:08.0\tbread\t9\t103\n2020-04-17 12:20:49.0\tyogurt\t1\t103\n2020-04-17 12:09:49.0\tchips\t4\t103\n2020-04-17 12:00:21.0\tcake\t16\t103\n2020-04-17 12:12:35.0\tbread\t12\t103\n2020-04-17 12:04:07.0\tapple\t19\t103\n2020-04-17 12:10:45.0\tyogurt\t12\t103\n2020-04-17 12:06:24.0\tchips\t6\t103\n2020-04-17 12:31:13.0\tcake\t5\t103\n2020-04-17 12:25:10.0\tcake\t16\t103\n2020-04-17 12:38:44.0\tcake\t23\t103\n2020-04-17 12:06:54.0\tchips\t15\t103\n2020-04-17 12:35:48.0\tyogurt\t5\t103\n2020-04-17 12:30:28.0\tbread\t10\t103\n2020-04-17 12:06:00.0\tcake\t27\t103\n2020-04-17 12:06:59.0\tapple\t27\t103\n2020-04-17 12:34:25.0\tbread\t20\t103\n2020-04-17 12:52:11.0\tapple\t18\t103\n2020-04-17 12:23:22.0\tchips\t17\t103\n2020-04-17 12:43:44.0\tchips\t30\t103\n2020-04-17 12:46:44.0\tyogurt\t9\t103\n2020-04-17 12:39:51.0\tapple\t33\t103\n2020-04-17 12:42:38.0\tcake\t26\t103\n2020-04-17 12:10:47.0\tchips\t16\t103\n2020-04-17 12:37:21.0\tbread\t22\t103\n2020-04-17 12:03:03.0\tyogurt\t16\t103\n2020-04-17 12:12:25.0\tcake\t8\t103\n2020-04-17 12:23:25.0\tbread\t19\t103\n2020-04-17 12:44:13.0\tcake\t12\t103\n2020-04-17 13:08:11.0\tyogurt\t19\t103\n2020-04-17 12:53:42.0\tyogurt\t40\t103\n2020-04-17 12:16:35.0\tyogurt\t33\t103\n2020-04-17 13:06:09.0\tapple\t42\t103\n2020-04-17 12:44:27.0\tyogurt\t34\t103\n2020-04-17 12:01:34.0\tbread\t25\t103\n2020-04-17 12:44:14.0\tbread\t47\t103\n2020-04-17 13:22:45.0\tbread\t43\t103\n2020-04-17 13:23:25.0\tapple\t24\t103\n2020-04-17 12:29:24.0\tyogurt\t0\t103\n2020-04-17 13:06:47.0\tchips\t51\t103\n2020-04-17 12:39:41.0\tbread\t42\t103\n2020-04-17 13:10:14.0\tcake\t26\t103\n2020-04-17 12:12:33.0\tchips\t26\t103\n2020-04-17 13:12:06.0\tchips\t18\t103\n2020-04-17 12:41:31.0\tbread\t53\t103\n2020-04-17 13:15:39.0\tapple\t14\t103\n2020-04-17 12:53:46.0\tyogurt\t55\t103\n2020-04-17 12:52:26.0\tchips\t9\t103\n2020-04-17 12:27:36.0\tchips\t40\t103\n2020-04-17 12:15:55.0\tapple\t15\t103\n2020-04-17 12:32:11.0\tyogurt\t5\t103\n2020-04-17 12:05:27.0\tchips\t18\t103\n2020-04-17 13:35:36.0\tyogurt\t22\t103\n2020-04-17 13:54:05.0\tyogurt\t61\t103\n2020-04-17 13:29:34.0\tbread\t1\t103\n2020-04-17 12:51:22.0\tyogurt\t7\t103\n2020-04-17 13:01:38.0\tcake\t31\t103\n2020-04-17 12:57:18.0\tchips\t47\t103\n2020-04-17 13:28:21.0\tcake\t13\t103\n2020-04-17 12:46:57.0\tbread\t46\t103\n2020-04-17 12:45:05.0\tyogurt\t75\t103\n2020-04-17 13:46:56.0\tchips\t18\t103\n2020-04-17 14:04:49.0\tcake\t57\t103\n2020-04-17 13:25:27.0\tchips\t8\t103\n2020-04-17 12:53:22.0\tbread\t70\t103\n2020-04-17 12:59:07.0\tbread\t55\t103\n2020-04-17 13:21:10.0\tapple\t3\t103\n2020-04-17 12:41:30.0\tapple\t65\t103\n2020-04-17 12:27:46.0\tchips\t74\t103\n2020-04-17 12:16:54.0\tapple\t68\t103\n2020-04-17 13:59:16.0\tcake\t85\t103\n2020-04-17 13:09:32.0\tchips\t60\t103\n2020-04-17 12:26:19.0\tapple\t69\t103\n2020-04-17 12:41:35.0\tcake\t28\t103\n2020-04-17 12:50:04.0\tbread\t42\t103\n2020-04-17 12:36:36.0\tyogurt\t10\t103\n2020-04-17 13:24:35.0\tcake\t52\t103\n2020-04-17 12:17:49.0\tapple\t32\t103\n2020-04-17 14:02:04.0\tcake\t34\t103\n2020-04-17 12:20:18.0\tapple\t68\t103\n2020-04-17 13:58:34.0\tapple\t86\t103\n2020-04-17 13:00:06.0\tbread\t82\t103\n2020-04-17 14:36:32.0\tapple\t65\t103\n2020-04-17 13:36:23.0\tcake\t89\t103\n2020-04-17 12:41:42.0\tapple\t45\t103\n2020-04-17 12:00:40.0\tyogurt\t0\t104\n2020-04-17 12:01:26.0\tchips\t1\t104\n2020-04-17 12:04:55.0\tbread\t0\t104\n2020-04-17 12:02:44.0\tchips\t3\t104\n2020-04-17 12:04:20.0\tbread\t2\t104\n2020-04-17 12:00:29.0\tyogurt\t0\t104\n2020-04-17 12:03:29.0\tbread\t0\t104\n2020-04-17 12:08:21.0\tcake\t7\t104\n2020-04-17 12:07:26.0\tapple\t1\t104\n2020-04-17 12:01:38.0\tcake\t5\t104\n2020-04-17 12:08:21.0\tyogurt\t8\t104\n2020-04-17 12:15:23.0\tbread\t6\t104\n2020-04-17 12:01:17.0\tapple\t6\t104\n2020-04-17 12:05:44.0\tbread\t1\t104\n2020-04-17 12:06:41.0\tapple\t3\t104\n2020-04-17 12:16:07.0\tcake\t8\t104\n2020-04-17 12:10:23.0\tchips\t2\t104\n2020-04-17 12:08:19.0\tapple\t13\t104\n2020-04-17 12:03:01.0\tapple\t8\t104\n2020-04-17 12:11:20.0\tcake\t11\t104\n2020-04-17 12:08:02.0\tcake\t10\t104\n2020-04-17 12:02:24.0\tapple\t10\t104\n2020-04-17 12:14:09.0\tapple\t11\t104\n2020-04-17 12:25:14.0\tbread\t13\t104\n2020-04-17 12:30:17.0\tbread\t2\t104\n2020-04-17 12:34:43.0\tyogurt\t12\t104\n2020-04-17 12:22:29.0\tapple\t9\t104\n2020-04-17 12:25:04.0\tchips\t22\t104\n2020-04-17 12:44:29.0\tyogurt\t25\t104\n2020-04-17 12:11:57.0\tyogurt\t28\t104\n2020-04-17 12:10:53.0\tapple\t20\t104\n2020-04-17 12:19:36.0\tyogurt\t16\t104\n2020-04-17 12:29:00.0\tbread\t1\t104\n2020-04-17 12:14:18.0\tchips\t27\t104\n2020-04-17 12:04:23.0\tyogurt\t11\t104\n2020-04-17 12:42:43.0\tbread\t30\t104\n2020-04-17 12:01:09.0\tcake\t29\t104\n2020-04-17 12:19:32.0\tchips\t6\t104\n2020-04-17 12:27:14.0\tcake\t7\t104\n2020-04-17 13:03:01.0\tcake\t24\t104\n2020-04-17 12:36:03.0\tchips\t20\t104\n2020-04-17 12:05:26.0\tyogurt\t13\t104\n2020-04-17 13:09:01.0\tchips\t20\t104\n2020-04-17 12:37:43.0\tbread\t38\t104\n2020-04-17 12:54:32.0\tapple\t34\t104\n2020-04-17 12:28:16.0\tapple\t22\t104\n2020-04-17 13:03:32.0\tyogurt\t26\t104\n2020-04-17 12:09:02.0\tyogurt\t13\t104\n2020-04-17 12:14:26.0\tyogurt\t13\t104\n2020-04-17 12:49:39.0\tapple\t2\t104\n2020-04-17 12:23:35.0\tcake\t40\t104\n2020-04-17 12:31:27.0\tcake\t44\t104\n2020-04-17 13:07:28.0\tcake\t32\t104\n2020-04-17 12:28:49.0\tyogurt\t37\t104\n2020-04-17 12:40:25.0\tbread\t41\t104\n2020-04-17 13:10:35.0\tcake\t5\t104\n2020-04-17 13:13:27.0\tapple\t8\t104\n2020-04-17 12:19:23.0\tbread\t27\t104\n2020-04-17 12:16:25.0\tbread\t1\t104\n2020-04-17 13:29:29.0\tapple\t56\t104\n2020-04-17 12:44:48.0\tyogurt\t37\t104\n2020-04-17 13:01:35.0\tbread\t50\t104\n2020-04-17 12:27:08.0\tchips\t62\t104\n2020-04-17 12:07:08.0\tapple\t37\t104\n2020-04-17 12:22:54.0\tapple\t7\t104\n2020-04-17 12:19:49.0\tcake\t45\t104\n2020-04-17 12:57:51.0\tyogurt\t37\t104\n2020-04-17 12:18:50.0\tcake\t29\t104\n2020-04-17 12:08:53.0\tyogurt\t9\t104\n2020-04-17 12:04:38.0\tapple\t9\t104\n2020-04-17 12:30:35.0\tcake\t48\t104\n2020-04-17 12:29:17.0\tapple\t44\t104\n2020-04-17 12:50:53.0\tapple\t71\t104\n2020-04-17 13:00:33.0\tbread\t32\t104\n2020-04-17 12:44:03.0\tcake\t50\t104\n2020-04-17 12:42:11.0\tchips\t69\t104\n2020-04-17 14:07:50.0\tyogurt\t54\t104\n2020-04-17 13:59:39.0\tyogurt\t37\t104\n2020-04-17 12:54:38.0\tbread\t48\t104\n2020-04-17 12:10:29.0\tchips\t54\t104\n2020-04-17 12:26:53.0\tbread\t44\t104\n2020-04-17 13:55:37.0\tyogurt\t37\t104\n2020-04-17 12:08:15.0\tapple\t74\t104\n2020-04-17 12:45:02.0\tcake\t24\t104\n2020-04-17 13:02:00.0\tchips\t35\t104\n2020-04-17 13:41:32.0\tyogurt\t12\t104\n2020-04-17 12:06:47.0\tbread\t64\t104\n2020-04-17 12:02:09.0\tyogurt\t75\t104\n2020-04-17 12:06:04.0\tbread\t51\t104\n2020-04-17 14:27:28.0\tchips\t6\t104\n2020-04-17 12:01:40.0\tapple\t60\t104\n2020-04-17 14:15:59.0\tcake\t24\t104\n2020-04-17 12:48:31.0\tcake\t69\t104\n2020-04-17 12:24:58.0\tyogurt\t8\t104\n2020-04-17 13:09:48.0\tbread\t54\t104\n2020-04-17 14:30:37.0\tyogurt\t10\t104\n2020-04-17 13:10:13.0\tyogurt\t95\t104\n2020-04-17 14:09:09.0\tchips\t70\t104\n2020-04-17 13:25:33.0\tyogurt\t97\t104\n2020-04-17 12:48:54.0\tbread\t73\t104\n2020-04-17 12:00:39.0\tchips\t0\t105\n2020-04-17 12:01:20.0\tcake\t0\t105\n2020-04-17 12:01:17.0\tchips\t2\t105\n2020-04-17 12:03:54.0\tbread\t1\t105\n2020-04-17 12:00:43.0\tyogurt\t0\t105\n2020-04-17 12:02:23.0\tcake\t3\t105\n2020-04-17 12:04:59.0\tchips\t2\t105\n2020-04-17 12:00:10.0\tbread\t1\t105\n2020-04-17 12:08:09.0\tapple\t2\t105\n2020-04-17 12:04:04.0\tapple\t9\t105\n2020-04-17 12:08:52.0\tapple\t10\t105\n2020-04-17 12:11:51.0\tcake\t6\t105\n2020-04-17 12:18:11.0\tyogurt\t4\t105\n2020-04-17 12:05:53.0\tcake\t13\t105\n2020-04-17 12:22:51.0\tapple\t1\t105\n2020-04-17 12:15:42.0\tbread\t2\t105\n2020-04-17 12:15:24.0\tbread\t6\t105\n2020-04-17 12:29:08.0\tcake\t11\t105\n2020-04-17 12:02:52.0\tchips\t0\t105\n2020-04-17 12:14:03.0\tyogurt\t16\t105\n2020-04-17 12:31:06.0\tcake\t0\t105\n2020-04-17 12:15:58.0\tbread\t7\t105\n2020-04-17 12:12:52.0\tbread\t1\t105\n2020-04-17 12:06:23.0\tyogurt\t10\t105\n2020-04-17 12:02:53.0\tchips\t14\t105\n2020-04-17 12:22:24.0\tchips\t7\t105\n2020-04-17 12:42:46.0\tcake\t9\t105\n2020-04-17 12:08:23.0\tcake\t3\t105\n2020-04-17 12:32:29.0\tchips\t4\t105\n2020-04-17 12:01:01.0\tapple\t28\t105\n2020-04-17 12:09:27.0\tbread\t6\t105\n2020-04-17 12:02:26.0\tbread\t5\t105\n2020-04-17 12:33:37.0\tbread\t6\t105\n2020-04-17 12:50:45.0\tbread\t8\t105\n2020-04-17 12:09:56.0\tchips\t30\t105\n2020-04-17 12:50:47.0\tcake\t4\t105\n2020-04-17 12:00:46.0\tyogurt\t19\t105\n2020-04-17 12:15:08.0\tcake\t22\t105\n2020-04-17 12:40:41.0\tcake\t33\t105\n2020-04-17 13:04:57.0\tapple\t28\t105\n2020-04-17 12:50:10.0\tbread\t31\t105\n2020-04-17 13:04:07.0\tbread\t8\t105\n2020-04-17 12:02:33.0\tyogurt\t12\t105\n2020-04-17 12:27:12.0\tchips\t6\t105\n2020-04-17 12:35:57.0\tchips\t13\t105\n2020-04-17 12:30:55.0\tapple\t32\t105\n2020-04-17 12:06:41.0\tchips\t41\t105\n2020-04-17 12:10:06.0\tchips\t41\t105\n2020-04-17 13:11:42.0\tyogurt\t2\t105\n2020-04-17 12:29:57.0\tchips\t7\t105\n2020-04-17 12:46:07.0\tchips\t41\t105\n2020-04-17 12:36:02.0\tbread\t3\t105\n2020-04-17 12:46:52.0\tchips\t22\t105\n2020-04-17 12:10:09.0\tapple\t8\t105\n2020-04-17 13:27:55.0\tbread\t50\t105\n2020-04-17 13:02:28.0\tcake\t2\t105\n2020-04-17 13:06:44.0\tchips\t37\t105\n2020-04-17 12:53:12.0\tyogurt\t11\t105\n2020-04-17 12:21:02.0\tchips\t43\t105\n2020-04-17 12:25:42.0\tapple\t33\t105\n2020-04-17 13:26:55.0\tchips\t12\t105\n2020-04-17 12:24:32.0\tyogurt\t42\t105\n2020-04-17 12:41:27.0\tapple\t16\t105\n2020-04-17 12:48:12.0\tapple\t40\t105\n2020-04-17 13:16:37.0\tbread\t10\t105\n2020-04-17 12:57:22.0\tchips\t58\t105\n2020-04-17 13:05:31.0\tchips\t66\t105\n2020-04-17 13:41:51.0\tyogurt\t60\t105\n2020-04-17 13:25:57.0\tyogurt\t68\t105\n2020-04-17 12:27:08.0\tcake\t25\t105\n2020-04-17 12:57:09.0\tapple\t44\t105\n2020-04-17 13:21:16.0\tyogurt\t36\t105\n2020-04-17 13:21:12.0\tyogurt\t6\t105\n2020-04-17 13:16:01.0\tchips\t14\t105\n2020-04-17 13:04:46.0\tbread\t58\t105\n2020-04-17 12:22:20.0\tchips\t13\t105\n2020-04-17 12:47:33.0\tyogurt\t13\t105\n2020-04-17 13:58:47.0\tchips\t40\t105\n2020-04-17 14:03:47.0\tyogurt\t74\t105\n2020-04-17 13:59:20.0\tyogurt\t50\t105\n2020-04-17 13:24:00.0\tyogurt\t48\t105\n2020-04-17 12:27:16.0\tyogurt\t5\t105\n2020-04-17 13:50:49.0\tapple\t5\t105\n2020-04-17 13:48:19.0\tchips\t64\t105\n2020-04-17 13:14:23.0\tapple\t28\t105\n2020-04-17 14:14:45.0\tchips\t68\t105\n2020-04-17 13:08:35.0\tbread\t26\t105\n2020-04-17 14:14:52.0\tbread\t48\t105\n2020-04-17 12:02:46.0\tchips\t53\t105\n2020-04-17 14:15:47.0\tcake\t47\t105\n2020-04-17 13:28:31.0\tyogurt\t35\t105\n2020-04-17 12:34:46.0\tyogurt\t84\t105\n2020-04-17 12:37:58.0\tbread\t11\t105\n2020-04-17 13:15:55.0\tbread\t36\t105\n2020-04-17 13:14:59.0\tapple\t68\t105\n2020-04-17 12:17:34.0\tbread\t43\t105\n2020-04-17 13:14:00.0\tchips\t11\t105\n2020-04-17 12:28:10.0\tbread\t15\t105\n2020-04-17 12:26:54.0\tchips\t61\t105\n2020-04-17 13:19:44.0\tcake\t49\t105\n2020-04-17 12:01:08.0\tbread\t0\t106\n2020-04-17 12:02:19.0\tcake\t0\t106\n2020-04-17 12:02:35.0\tbread\t0\t106\n2020-04-17 12:02:54.0\tcake\t1\t106\n2020-04-17 12:07:57.0\tyogurt\t3\t106\n2020-04-17 12:09:01.0\tapple\t2\t106\n2020-04-17 12:10:31.0\tcake\t2\t106\n2020-04-17 12:05:11.0\tbread\t4\t106\n2020-04-17 12:11:29.0\tbread\t0\t106\n2020-04-17 12:14:53.0\tapple\t9\t106\n2020-04-17 12:00:59.0\tapple\t8\t106\n2020-04-17 12:19:05.0\tchips\t6\t106\n2020-04-17 12:00:02.0\tbread\t3\t106\n2020-04-17 12:18:04.0\tchips\t9\t106\n2020-04-17 12:17:41.0\tapple\t6\t106\n2020-04-17 12:00:43.0\tbread\t1\t106\n2020-04-17 12:23:13.0\tcake\t11\t106\n2020-04-17 12:19:10.0\tchips\t11\t106\n2020-04-17 12:11:23.0\tcake\t17\t106\n2020-04-17 12:28:32.0\tbread\t4\t106\n2020-04-17 12:28:27.0\tchips\t7\t106\n2020-04-17 12:13:35.0\tapple\t16\t106\n2020-04-17 12:20:02.0\tchips\t9\t106\n2020-04-17 12:10:12.0\tbread\t5\t106\n2020-04-17 12:21:26.0\tyogurt\t4\t106\n2020-04-17 12:25:07.0\tbread\t2\t106\n2020-04-17 12:36:53.0\tcake\t26\t106\n2020-04-17 12:17:24.0\tcake\t6\t106\n2020-04-17 12:31:25.0\tbread\t8\t106\n2020-04-17 12:30:50.0\tyogurt\t1\t106\n2020-04-17 12:38:06.0\tcake\t0\t106\n2020-04-17 12:30:30.0\tapple\t23\t106\n2020-04-17 12:01:15.0\tcake\t25\t106\n2020-04-17 12:37:56.0\tbread\t1\t106\n2020-04-17 12:56:31.0\tcake\t16\t106\n2020-04-17 12:15:41.0\tapple\t2\t106\n2020-04-17 12:00:19.0\tapple\t8\t106\n2020-04-17 12:44:32.0\tchips\t21\t106\n2020-04-17 12:21:39.0\tchips\t24\t106\n2020-04-17 12:03:26.0\tbread\t14\t106\n2020-04-17 12:50:45.0\tapple\t39\t106\n2020-04-17 12:48:13.0\tapple\t9\t106\n2020-04-17 12:10:35.0\tyogurt\t21\t106\n2020-04-17 12:50:20.0\tapple\t8\t106\n2020-04-17 12:03:50.0\tchips\t4\t106\n2020-04-17 12:31:46.0\tchips\t22\t106\n2020-04-17 12:33:12.0\tyogurt\t38\t106\n2020-04-17 12:44:36.0\tchips\t14\t106\n2020-04-17 12:46:17.0\tchips\t6\t106\n2020-04-17 12:36:15.0\tcake\t31\t106\n2020-04-17 13:15:10.0\tchips\t40\t106\n2020-04-17 12:33:19.0\tchips\t10\t106\n2020-04-17 12:48:53.0\tbread\t46\t106\n2020-04-17 13:13:28.0\tyogurt\t22\t106\n2020-04-17 12:05:03.0\tbread\t11\t106\n2020-04-17 12:52:58.0\tchips\t15\t106\n2020-04-17 12:11:31.0\tapple\t4\t106\n2020-04-17 12:00:50.0\tchips\t3\t106\n2020-04-17 12:42:43.0\tchips\t31\t106\n2020-04-17 13:32:27.0\tbread\t27\t106\n2020-04-17 12:40:18.0\tyogurt\t42\t106\n2020-04-17 12:36:13.0\tyogurt\t32\t106\n2020-04-17 12:52:19.0\tyogurt\t23\t106\n2020-04-17 13:40:11.0\tbread\t41\t106\n2020-04-17 13:10:51.0\tchips\t29\t106\n2020-04-17 13:19:01.0\tbread\t41\t106\n2020-04-17 13:31:45.0\tyogurt\t35\t106\n2020-04-17 12:39:46.0\tchips\t62\t106\n2020-04-17 13:44:35.0\tcake\t58\t106\n2020-04-17 12:19:25.0\tbread\t56\t106\n2020-04-17 12:41:26.0\tyogurt\t58\t106\n2020-04-17 13:57:32.0\tapple\t39\t106\n2020-04-17 13:08:15.0\tyogurt\t36\t106\n2020-04-17 12:22:10.0\tyogurt\t5\t106\n2020-04-17 13:50:13.0\tcake\t70\t106\n2020-04-17 12:33:02.0\tbread\t54\t106\n2020-04-17 13:54:46.0\tcake\t48\t106\n2020-04-17 13:24:17.0\tchips\t53\t106\n2020-04-17 12:22:57.0\tyogurt\t16\t106\n2020-04-17 12:13:48.0\tyogurt\t79\t106\n2020-04-17 13:07:51.0\tcake\t69\t106\n2020-04-17 13:24:30.0\tyogurt\t27\t106\n2020-04-17 13:29:18.0\tapple\t13\t106\n2020-04-17 13:00:51.0\tapple\t65\t106\n2020-04-17 13:13:06.0\tchips\t66\t106\n2020-04-17 12:09:45.0\tyogurt\t4\t106\n2020-04-17 13:12:52.0\tcake\t81\t106\n2020-04-17 13:17:26.0\tcake\t30\t106\n2020-04-17 12:10:58.0\tchips\t78\t106\n2020-04-17 12:21:17.0\tyogurt\t79\t106\n2020-04-17 13:53:59.0\tchips\t3\t106\n2020-04-17 12:31:59.0\tyogurt\t24\t106\n2020-04-17 13:19:25.0\tyogurt\t83\t106\n2020-04-17 12:23:51.0\tapple\t12\t106\n2020-04-17 12:40:08.0\tbread\t20\t106\n2020-04-17 14:28:44.0\tapple\t79\t106\n2020-04-17 13:18:39.0\tcake\t42\t106\n2020-04-17 13:22:24.0\tapple\t16\t106\n2020-04-17 12:21:02.0\tcake\t93\t106\n2020-04-17 12:49:32.0\tcake\t29\t106\n"
+          },
+          {
+            "type": "TEXT",
+            "data": ""
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587154371838_1744202",
+      "id": "20200417-201251_1633731732",
+      "dateCreated": "2020-04-17 20:12:51.839",
+      "dateStarted": "2020-04-17 21:02:07.654",
+      "dateFinished": "2020-04-17 21:02:08.039",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Now that we have some Data. We should write it into ElasticSearch\nThis can be done easily using the ElasticSearch spark client.\n\nTo make sure your local elasticsearch connection is setup. Try the following. \n\n1. Open up a bash session inside of the Zeppelin Docker container\n~~~\ndocker exec -it zeppelin bash\n~~~\n\n2. Then curl across containers to the `elasticsearch` container over the docker network using the hostname `elasticsearch` instead of localhost\n~~~\ncurl http://elasticsearch:9200/_cat/indices?v\n~~~\n\nYou should see something like which means you are golden\n~~~\nhealth status index                uuid                   pri rep docs.count docs.deleted store.size pri.store.size\ngreen  open   .kibana_task_manager 2APYmb8XRnakzzw93037jQ   1   0          2            0     45.5kb         45.5kb\ngreen  open   .kibana_1            8yBHxJxeQOCCcv3nd90iUQ   1   0          3            0     11.9kb         11.9kb\n~~~",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:01:29.881",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eNow that we have some Data. We should write it into ElasticSearch\u003c/h2\u003e\n\u003cp\u003eThis can be done easily using the ElasticSearch spark client.\u003c/p\u003e\n\u003cp\u003eTo make sure your local elasticsearch connection is setup. Try the following. \u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\n  \u003cp\u003e\n  \u003cp\u003eOpen up a bash session inside of the Zeppelin Docker container\u003c/p\u003e\n  \u003cpre\u003e\u003ccode\u003edocker exec -it zeppelin bash\n\u003c/code\u003e\u003c/pre\u003e\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eThen curl across containers to the \u003ccode\u003eelasticsearch\u003c/code\u003e container over the docker network using the hostname \u003ccode\u003eelasticsearch\u003c/code\u003e instead of localhost\u003c/p\u003e\n  \u003cpre\u003e\u003ccode\u003ecurl http://elasticsearch:9200/_cat/indices?v\n\u003c/code\u003e\u003c/pre\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eYou should see something like which means you are golden\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ehealth status index                uuid                   pri rep docs.count docs.deleted store.size pri.store.size\ngreen  open   .kibana_task_manager 2APYmb8XRnakzzw93037jQ   1   0          2            0     45.5kb         45.5kb\ngreen  open   .kibana_1            8yBHxJxeQOCCcv3nd90iUQ   1   0          3            0     11.9kb         11.9kb\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587154416275_2023429812",
+      "id": "20200417-201336_283311257",
+      "dateCreated": "2020-04-17 20:13:36.275",
+      "dateStarted": "2020-04-17 21:01:29.889",
+      "dateFinished": "2020-04-17 21:01:29.919",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nNext we will try to just store the data as is - without an Index Mapping.",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:17:25.645",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eNext we will try to just store the data as is - without an Index Mapping.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587158225800_669618209",
+      "id": "20200417-211705_302540730",
+      "dateCreated": "2020-04-17 21:17:05.800",
+      "dateStarted": "2020-04-17 21:17:25.649",
+      "dateFinished": "2020-04-17 21:17:25.668",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport org.apache.spark.sql.SaveMode\n\ninitialSnacks\n  .write\n  .format(\"org.elasticsearch.spark.sql\")\n  .option(\"es.port\", 9200)\n  .option(\"es.nodes\", \"elasticsearch\")\n  .option(\"es.nodes.wan.only\",\"true\")\n  .option(\"es.batch.size.entries\", 100)\n  .option(\"es.batch.size.bytes\", 1024)\n  .option(\"es.batch.write.retry.count\", 3)\n  .option(\"es.batch.write.retry.wait\", \"5s\")\n  .mode(SaveMode.Append)\n  .save(s\"snacks/_doc\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:16:38.056",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.SaveMode\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587154380767_-342990091",
+      "id": "20200417-201300_77554252",
+      "dateCreated": "2020-04-17 20:13:00.767",
+      "dateStarted": "2020-04-17 21:16:38.082",
+      "dateFinished": "2020-04-17 21:16:38.850",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Please go to the Following Link to see what you just wrote\n\nKibana Index Overview Page: http://localhost:5601/app/kibana#/management/elasticsearch/index_management/indices?_g\u003d()\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:20:20.767",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePlease go to the Following Link to see what you just wrote\u003c/h2\u003e\n\u003cp\u003eKibana Index Overview Page: \u003ca href\u003d\"http://localhost:5601/app/kibana#/management/elasticsearch/index_management/indices?_g\u003d(\"\u003ehttp://localhost:5601/app/kibana#/management/elasticsearch/index_management/indices?_g\u003d(\u003c/a\u003e)\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587154885927_1209390522",
+      "id": "20200417-202125_174817470",
+      "dateCreated": "2020-04-17 20:21:25.927",
+      "dateStarted": "2020-04-17 21:20:20.770",
+      "dateFinished": "2020-04-17 21:20:20.780",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## We need to actually create an Index Mapping in order for our Timestamps\nThe following template will declare the mapping property `timestamp` as type `date` vs `long`. This will allow us to create an index.\n\n1. Open up the Console in ES. http://localhost:5601/app/kibana#/dev_tools/console?_g\u003d()\n\n`PUT _template/template_snacks`\n~~~\n{  \n  \"order\" : 1,\n  \"index_patterns\" : [\n    \"snacks*\"\n  ],\n  \"settings\" : {\n    \"index\" : {\n      \"lifecycle\": {\n        \"name\": \"ExpireAfter30Days\"\n      },\n      \"number_of_shards\" : \"1\",\n      \"refresh_interval\" : \"60s\"\n    }\n  },\n  \"mappings\" : {\n    \"properties\" : {\n      \"timestamp\" : {\n        \"type\": \"date\"\n      }\n    }\n  },\n  \"aliases\" : { }\n}\n~~~",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:22:32.815",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWe need to actually create an Index Mapping in order for our Timestamps\u003c/h2\u003e\n\u003cp\u003eThe following template will declare the mapping property \u003ccode\u003etimestamp\u003c/code\u003e as type \u003ccode\u003edate\u003c/code\u003e vs \u003ccode\u003elong\u003c/code\u003e. This will allow us to create an index.\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eOpen up the Console in ES. \u003ca href\u003d\"http://localhost:5601/app/kibana#/dev_tools/console?_g\u003d(\"\u003ehttp://localhost:5601/app/kibana#/dev_tools/console?_g\u003d(\u003c/a\u003e)\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003e\u003ccode\u003ePUT _template/template_snacks\u003c/code\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e{  \n  \u0026quot;order\u0026quot; : 1,\n  \u0026quot;index_patterns\u0026quot; : [\n    \u0026quot;snacks*\u0026quot;\n  ],\n  \u0026quot;settings\u0026quot; : {\n    \u0026quot;index\u0026quot; : {\n      \u0026quot;lifecycle\u0026quot;: {\n        \u0026quot;name\u0026quot;: \u0026quot;ExpireAfter30Days\u0026quot;\n      },\n      \u0026quot;number_of_shards\u0026quot; : \u0026quot;1\u0026quot;,\n      \u0026quot;refresh_interval\u0026quot; : \u0026quot;60s\u0026quot;\n    }\n  },\n  \u0026quot;mappings\u0026quot; : {\n    \u0026quot;properties\u0026quot; : {\n      \u0026quot;timestamp\u0026quot; : {\n        \u0026quot;type\u0026quot;: \u0026quot;date\u0026quot;\n      }\n    }\n  },\n  \u0026quot;aliases\u0026quot; : { }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587158279092_722543969",
+      "id": "20200417-211759_1909725564",
+      "dateCreated": "2020-04-17 21:17:59.092",
+      "dateStarted": "2020-04-17 21:22:32.817",
+      "dateFinished": "2020-04-17 21:22:32.846",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Important: Delete the current Index Mapping otherwise the new changes will not take affect\n1. Go to the http://localhost:5601/app/kibana#/management/elasticsearch/index_management/indices?_g\u003d()\n2. Click on the index `snacks` and `Manage Index` and select `Delete Index`\n3. **Note: Don\u0027t do this in production environments**. This process should be all controlled by explicit scripts.",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:25:33.745",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eImportant: Delete the current Index Mapping otherwise the new changes will not take affect\u003c/h3\u003e\n\u003col\u003e\n  \u003cli\u003eGo to the \u003ca href\u003d\"http://localhost:5601/app/kibana#/management/elasticsearch/index_management/indices?_g\u003d(\"\u003ehttp://localhost:5601/app/kibana#/management/elasticsearch/index_management/indices?_g\u003d(\u003c/a\u003e)\u003c/li\u003e\n  \u003cli\u003eClick on the index \u003ccode\u003esnacks\u003c/code\u003e and \u003ccode\u003eManage Index\u003c/code\u003e and select \u003ccode\u003eDelete Index\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cstrong\u003eNote: Don\u0026rsquo;t do this in production environments\u003c/strong\u003e. This process should be all controlled by explicit scripts.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587158609282_-148939994",
+      "id": "20200417-212329_480421196",
+      "dateCreated": "2020-04-17 21:23:29.282",
+      "dateStarted": "2020-04-17 21:25:33.751",
+      "dateFinished": "2020-04-17 21:25:33.765",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\ninitialSnacks\n  .write\n  .format(\"org.elasticsearch.spark.sql\")\n  .option(\"es.port\", 9200)\n  .option(\"es.nodes\", \"elasticsearch\")\n  .option(\"es.nodes.wan.only\",\"true\")\n  .option(\"es.batch.size.entries\", 100)\n  .option(\"es.batch.size.bytes\", 1024)\n  .option(\"es.batch.write.retry.count\", 3)\n  .option(\"es.batch.write.retry.wait\", \"5s\")\n  .mode(SaveMode.Append)\n  .save(s\"snacks/_doc\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:24:24.176",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1587158483678_-940830517",
+      "id": "20200417-212123_1983618100",
+      "dateCreated": "2020-04-17 21:21:23.678",
+      "dateStarted": "2020-04-17 21:24:24.214",
+      "dateFinished": "2020-04-17 21:24:24.953",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Adding `mapping.id` to each row for Idempotency\n~~~\n.option(\"es.mapping.id\", \"uuid\")\n~~~\n\nWhen you declare the `es.mapping.id` it will expect that the DataFrame has that column in it. We will have to add that in order to enable `idempotent` keys.",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:27:41.362",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAdding \u003ccode\u003emapping.id\u003c/code\u003e to each row for Idempotency\u003c/h2\u003e\n\u003cpre\u003e\u003ccode\u003e.option(\u0026quot;es.mapping.id\u0026quot;, \u0026quot;uuid\u0026quot;)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eWhen you declare the \u003ccode\u003ees.mapping.id\u003c/code\u003e it will expect that the DataFrame has that column in it. We will have to add that in order to enable \u003ccode\u003eidempotent\u003c/code\u003e keys.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587158768414_1113481969",
+      "id": "20200417-212608_1521543832",
+      "dateCreated": "2020-04-17 21:26:08.414",
+      "dateStarted": "2020-04-17 21:27:41.363",
+      "dateFinished": "2020-04-17 21:27:41.377",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 21:27:41.330",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1586480203461_-958678481",
-      "id": "20200410-005643_220077392",
-      "dateCreated": "2020-04-10 00:56:43.461",
+      "jobName": "paragraph_1587158861329_-1293506657",
+      "id": "20200417-212741_861524872",
+      "dateCreated": "2020-04-17 21:27:41.329",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
@@ -61,6 +736,7 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
+    "md:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

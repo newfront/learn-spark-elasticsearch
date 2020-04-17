@@ -4,7 +4,9 @@
 .DS_Store
 */.DS_Store
 
-logs/*
+logs/*.log
+*.log
+*/logs/*.log
 
 .classpath
 .settings
