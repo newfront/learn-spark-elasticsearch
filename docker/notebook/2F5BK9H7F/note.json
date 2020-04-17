@@ -3,7 +3,7 @@
     {
       "text": "%spark\n\nspark.sparkContext.getConf.toDebugString",
       "user": "anonymous",
-      "dateUpdated": "2020-04-17 20:57:27.977",
+      "dateUpdated": "2020-04-17 22:09:43.975",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -26,7 +26,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "res1: String \u003d\nmaster\u003dlocal[*]\nspark.app.id\u003dlocal-1587157065473\nspark.app.name\u003dZeppelin\nspark.cores.max\u003d4\nspark.driver.extraClassPath\u003d:/zeppelin/interpreter/spark/*:/zeppelin/lib/interpreter/*::/zeppelin/interpreter/spark/spark-interpreter-0.8.2.jar\nspark.driver.extraJavaOptions\u003d -Dfile.encoding\u003dUTF-8 -Dlog4j.configuration\u003dfile:///zeppelin/conf/log4j.properties -Dzeppelin.log.file\u003d/logs//zeppelin-interpreter-spark--zeppelin.log\nspark.driver.host\u003dzeppelin\nspark.driver.port\u003d44087\nspark.es.batch.size.bytes\u003d\"1mb\"\nspark.es.batch.size.entries\u003d1000\nspark.es.batch.write.refresh\u003dtrue\nspark.es.batch.write.retry.count\u003d3\nspark.es.batch.write.retry.wait\u003d\"5s\"\nspark.es.nodes\u003d\"elasticsearch\"\nspark.es.nodes.client.only\u003dfalse\nspark.es.nodes.data.only\u003dfalse\nspark.es.nodes.discovery\u003dfalse\nspark.es.nodes.in..."
+            "data": "res1: String \u003d\nmaster\u003dlocal[*]\nspark.app.id\u003dlocal-1587161403503\nspark.app.name\u003dZeppelin\nspark.cores.max\u003d4\nspark.driver.extraClassPath\u003d:/zeppelin/interpreter/spark/*:/zeppelin/lib/interpreter/*::/zeppelin/interpreter/spark/spark-interpreter-0.8.2.jar\nspark.driver.extraJavaOptions\u003d -Dfile.encoding\u003dUTF-8 -Dlog4j.configuration\u003dfile:///zeppelin/conf/log4j.properties -Dzeppelin.log.file\u003d/logs//zeppelin-interpreter-spark--zeppelin.log\nspark.driver.host\u003dzeppelin\nspark.driver.port\u003d37715\nspark.es.batch.size.bytes\u003d1mb\nspark.es.batch.size.entries\u003d1000\nspark.es.batch.write.refresh\u003dtrue\nspark.es.batch.write.retry.count\u003d3\nspark.es.batch.write.retry.wait\u003d5s\nspark.es.nodes\u003d\"elasticsearch\"\nspark.es.nodes.client.only\u003dfalse\nspark.es.nodes.data.only\u003dfalse\nspark.es.nodes.discovery\u003dfalse\nspark.es.nodes.ingest..."
           }
         ]
       },
@@ -34,8 +34,8 @@
       "jobName": "paragraph_1586480183643_1901874113",
       "id": "20200410-005623_2069789251",
       "dateCreated": "2020-04-10 00:56:23.643",
-      "dateStarted": "2020-04-17 20:57:28.151",
-      "dateFinished": "2020-04-17 20:57:48.995",
+      "dateStarted": "2020-04-17 22:09:44.229",
+      "dateFinished": "2020-04-17 22:10:07.613",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -83,7 +83,7 @@
     {
       "text": "%spark\nimport java.sql.Timestamp\ncase class Snack(timestamp: Timestamp, name: String, quantity: Int, personId: Int)",
       "user": "anonymous",
-      "dateUpdated": "2020-04-17 21:01:50.049",
+      "dateUpdated": "2020-04-17 22:16:27.643",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -114,15 +114,15 @@
       "jobName": "paragraph_1586480203461_-958678481",
       "id": "20200410-005643_220077392",
       "dateCreated": "2020-04-10 00:56:43.461",
-      "dateStarted": "2020-04-17 21:01:50.092",
-      "dateFinished": "2020-04-17 21:01:50.796",
+      "dateStarted": "2020-04-17 22:16:27.711",
+      "dateFinished": "2020-04-17 22:16:28.006",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Create a bunch of Snacks that we can feed into our DataFrame\n\nUse a Scala Sequence (Seq) of Snacks in order to use the `spark: SparkSession` helper methods to convert this to a Dataset[Snack]",
       "user": "anonymous",
-      "dateUpdated": "2020-04-17 19:54:11.172",
+      "dateUpdated": "2020-04-17 22:16:32.437",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -155,48 +155,15 @@
       "jobName": "paragraph_1587153159636_1233604255",
       "id": "20200417-195239_424201257",
       "dateCreated": "2020-04-17 19:52:39.636",
-      "dateStarted": "2020-04-17 19:54:11.181",
-      "dateFinished": "2020-04-17 19:54:11.197",
+      "dateStarted": "2020-04-17 22:16:32.453",
+      "dateFinished": "2020-04-17 22:16:35.454",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark\nimport java.util.Random\n\nval users \u003d Seq(100,101,102,103,104,105,106)\n\nval snacks \u003d Seq(\"apple\", \"chips\", \"yogurt\", \"bread\", \"cake\", \"tart\")\nval snacksLen \u003d snacks.length-1\nval startingTime \u003d Timestamp.valueOf(\"2020-04-17 12:00:00\")\n\n\nval generator \u003d new Random(100L);\n\ndef randomSnack(): String \u003d {\n  snacks(Math.round(generator.nextInt(snacksLen)))\n}\n\ndef randomQuantity(num: Int): Int \u003d {\n  Math.round(generator.nextInt(num))\n}\n\ndef randomSnacking(user: Int): Seq[Snack] \u003d {\n  (1 to 100).map(index \u003d\u003e {\n    val secondsOffset \u003d Math.round(generator.nextInt(100*index))\n    val ts \u003d Timestamp.from(startingTime.toInstant.plusSeconds(secondsOffset))\n    Snack(ts, randomSnack(), randomQuantity(index), user)\n  })\n}\n\nval snackingBehavior \u003d users.map(randomSnacking).flatten\n",
       "user": "anonymous",
-      "dateUpdated": "2020-04-17 21:01:52.876",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {}
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "import java.util.Random\nusers: Seq[Int] \u003d List(100, 101, 102, 103, 104, 105, 106)\nsnacks: Seq[String] \u003d List(apple, chips, yogurt, bread, cake, tart)\nsnacksLen: Int \u003d 5\nstartingTime: java.sql.Timestamp \u003d 2020-04-17 12:00:00.0\ngenerator: java.util.Random \u003d java.util.Random@3e3c0874\nrandomSnack: ()String\nrandomQuantity: (num: Int)Int\nrandomSnacking: (user: Int)Seq[Snack]\nsnackingBehavior: Seq[Snack] \u003d List(Snack(2020-04-17 12:00:15.0,apple,0,100), Snack(2020-04-17 12:03:08.0,chips,0,100), Snack(2020-04-17 12:03:56.0,bread,1,100), Snack(2020-04-17 12:01:53.0,yogurt,0,100), Snack(2020-04-17 12:04:16.0,yogurt,2,100), Snack(2020-04-17 12:07:39.0,apple,0,100), Snack(2020-04-17 12:02:53.0,cake,0,100), Snack(2020-04-17 12:00:28.0,apple,4,100), Snack(2020-04-17 12:09:27.0,chips,4,100), Snack(2020..."
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1587153110697_-149435667",
-      "id": "20200417-195150_1405804038",
-      "dateCreated": "2020-04-17 19:51:50.698",
-      "dateStarted": "2020-04-17 21:01:52.908",
-      "dateFinished": "2020-04-17 21:01:53.577",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%spark\nval initialSnacks \u003d spark.createDataset[Snack](snackingBehavior)",
-      "user": "anonymous",
-      "dateUpdated": "2020-04-17 21:01:57.955",
+      "dateUpdated": "2020-04-17 22:16:40.729",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -219,7 +186,46 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "initialSnacks: org.apache.spark.sql.Dataset[Snack] \u003d [timestamp: timestamp, name: string ... 2 more fields]\n"
+            "data": "import java.util.Random\nusers: Seq[Int] \u003d List(100, 101, 102, 103, 104, 105, 106)\nsnacks: Seq[String] \u003d List(apple, chips, yogurt, bread, cake, tart)\nsnacksLen: Int \u003d 5\nstartingTime: java.sql.Timestamp \u003d 2020-04-17 12:00:00.0\ngenerator: java.util.Random \u003d java.util.Random@7514c20b\nrandomSnack: ()String\nrandomQuantity: (num: Int)Int\nrandomSnacking: (user: Int)Seq[Snack]\nsnackingBehavior: Seq[Snack] \u003d List(Snack(2020-04-17 12:00:15.0,apple,0,100), Snack(2020-04-17 12:03:08.0,chips,0,100), Snack(2020-04-17 12:03:56.0,bread,1,100), Snack(2020-04-17 12:01:53.0,yogurt,0,100), Snack(2020-04-17 12:04:16.0,yogurt,2,100), Snack(2020-04-17 12:07:39.0,apple,0,100), Snack(2020-04-17 12:02:53.0,cake,0,100), Snack(2020-04-17 12:00:28.0,apple,4,100), Snack(2020-04-17 12:09:27.0,chips,4,100), Snack(2020..."
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587153110697_-149435667",
+      "id": "20200417-195150_1405804038",
+      "dateCreated": "2020-04-17 19:51:50.698",
+      "dateStarted": "2020-04-17 22:16:40.793",
+      "dateFinished": "2020-04-17 22:16:41.719",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport spark.implicits._\n\nval initialSnacks \u003d spark.createDataset[Snack](snackingBehavior)\n\ninitialSnacks.printSchema",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 22:20:06.455",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- timestamp: timestamp (nullable \u003d true)\n |-- name: string (nullable \u003d true)\n |-- quantity: integer (nullable \u003d false)\n |-- personId: integer (nullable \u003d false)\n\nimport spark.implicits._\ninitialSnacks: org.apache.spark.sql.Dataset[Snack] \u003d [timestamp: timestamp, name: string ... 2 more fields]\n"
           }
         ]
       },
@@ -227,15 +233,15 @@
       "jobName": "paragraph_1587154063745_1261423387",
       "id": "20200417-200743_919951208",
       "dateCreated": "2020-04-17 20:07:43.745",
-      "dateStarted": "2020-04-17 21:01:57.995",
-      "dateFinished": "2020-04-17 21:02:01.158",
+      "dateStarted": "2020-04-17 22:20:06.507",
+      "dateFinished": "2020-04-17 22:20:07.603",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark\ninitialSnacks.createOrReplaceTempView(\"snacks\")",
       "user": "anonymous",
-      "dateUpdated": "2020-04-17 21:02:04.386",
+      "dateUpdated": "2020-04-17 22:20:45.887",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -261,15 +267,15 @@
       "jobName": "paragraph_1587154351412_2120679813",
       "id": "20200417-201231_323133645",
       "dateCreated": "2020-04-17 20:12:31.412",
-      "dateStarted": "2020-04-17 21:02:04.419",
-      "dateFinished": "2020-04-17 21:02:05.398",
+      "dateStarted": "2020-04-17 22:20:45.945",
+      "dateFinished": "2020-04-17 22:20:47.280",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%sql\nselect * from snacks",
       "user": "anonymous",
-      "dateUpdated": "2020-04-17 21:02:07.617",
+      "dateUpdated": "2020-04-17 22:21:38.235",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -277,7 +283,7 @@
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
+              "mode": "multiBarChart",
               "height": 300.0,
               "optionOpen": false,
               "setting": {
@@ -355,10 +361,39 @@
                   },
                   "updated": false,
                   "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": true
                 }
               },
-              "commonSetting": {}
-            }
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "name",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [
+                {
+                  "name": "personId",
+                  "index": 3.0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "quantity",
+                  "index": 2.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
           }
         },
         "editorSetting": {
@@ -390,15 +425,15 @@
       "jobName": "paragraph_1587154371838_1744202",
       "id": "20200417-201251_1633731732",
       "dateCreated": "2020-04-17 20:12:51.839",
-      "dateStarted": "2020-04-17 21:02:07.654",
-      "dateFinished": "2020-04-17 21:02:08.039",
+      "dateStarted": "2020-04-17 22:21:07.578",
+      "dateFinished": "2020-04-17 22:21:08.403",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Now that we have some Data. We should write it into ElasticSearch\nThis can be done easily using the ElasticSearch spark client.\n\nTo make sure your local elasticsearch connection is setup. Try the following. \n\n1. Open up a bash session inside of the Zeppelin Docker container\n~~~\ndocker exec -it zeppelin bash\n~~~\n\n2. Then curl across containers to the `elasticsearch` container over the docker network using the hostname `elasticsearch` instead of localhost\n~~~\ncurl http://elasticsearch:9200/_cat/indices?v\n~~~\n\nYou should see something like which means you are golden\n~~~\nhealth status index                uuid                   pri rep docs.count docs.deleted store.size pri.store.size\ngreen  open   .kibana_task_manager 2APYmb8XRnakzzw93037jQ   1   0          2            0     45.5kb         45.5kb\ngreen  open   .kibana_1            8yBHxJxeQOCCcv3nd90iUQ   1   0          3            0     11.9kb         11.9kb\n~~~",
       "user": "anonymous",
-      "dateUpdated": "2020-04-17 21:01:29.881",
+      "dateUpdated": "2020-04-17 22:22:52.239",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -431,15 +466,15 @@
       "jobName": "paragraph_1587154416275_2023429812",
       "id": "20200417-201336_283311257",
       "dateCreated": "2020-04-17 20:13:36.275",
-      "dateStarted": "2020-04-17 21:01:29.889",
-      "dateFinished": "2020-04-17 21:01:29.919",
+      "dateStarted": "2020-04-17 22:22:52.245",
+      "dateFinished": "2020-04-17 22:22:52.281",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\nNext we will try to just store the data as is - without an Index Mapping.",
       "user": "anonymous",
-      "dateUpdated": "2020-04-17 21:17:25.645",
+      "dateUpdated": "2020-04-17 22:27:21.348",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -472,15 +507,15 @@
       "jobName": "paragraph_1587158225800_669618209",
       "id": "20200417-211705_302540730",
       "dateCreated": "2020-04-17 21:17:05.800",
-      "dateStarted": "2020-04-17 21:17:25.649",
-      "dateFinished": "2020-04-17 21:17:25.668",
+      "dateStarted": "2020-04-17 22:27:21.352",
+      "dateFinished": "2020-04-17 22:27:21.364",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark\nimport org.apache.spark.sql.SaveMode\n\ninitialSnacks\n  .write\n  .format(\"org.elasticsearch.spark.sql\")\n  .option(\"es.port\", 9200)\n  .option(\"es.nodes\", \"elasticsearch\")\n  .option(\"es.nodes.wan.only\",\"true\")\n  .option(\"es.batch.size.entries\", 100)\n  .option(\"es.batch.size.bytes\", 1024)\n  .option(\"es.batch.write.retry.count\", 3)\n  .option(\"es.batch.write.retry.wait\", \"5s\")\n  .mode(SaveMode.Append)\n  .save(s\"snacks/_doc\")",
       "user": "anonymous",
-      "dateUpdated": "2020-04-17 21:16:38.056",
+      "dateUpdated": "2020-04-17 22:31:03.290",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -511,8 +546,8 @@
       "jobName": "paragraph_1587154380767_-342990091",
       "id": "20200417-201300_77554252",
       "dateCreated": "2020-04-17 20:13:00.767",
-      "dateStarted": "2020-04-17 21:16:38.082",
-      "dateFinished": "2020-04-17 21:16:38.850",
+      "dateStarted": "2020-04-17 22:31:03.332",
+      "dateFinished": "2020-04-17 22:31:04.249",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -642,7 +677,7 @@
     {
       "text": "%spark\ninitialSnacks\n  .write\n  .format(\"org.elasticsearch.spark.sql\")\n  .option(\"es.port\", 9200)\n  .option(\"es.nodes\", \"elasticsearch\")\n  .option(\"es.nodes.wan.only\",\"true\")\n  .option(\"es.batch.size.entries\", 100)\n  .option(\"es.batch.size.bytes\", 1024)\n  .option(\"es.batch.write.retry.count\", 3)\n  .option(\"es.batch.write.retry.wait\", \"5s\")\n  .mode(SaveMode.Append)\n  .save(s\"snacks/_doc\")",
       "user": "anonymous",
-      "dateUpdated": "2020-04-17 21:24:24.176",
+      "dateUpdated": "2020-04-17 22:39:43.174",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -668,8 +703,8 @@
       "jobName": "paragraph_1587158483678_-940830517",
       "id": "20200417-212123_1983618100",
       "dateCreated": "2020-04-17 21:21:23.678",
-      "dateStarted": "2020-04-17 21:24:24.214",
-      "dateFinished": "2020-04-17 21:24:24.953",
+      "dateStarted": "2020-04-17 22:39:43.208",
+      "dateFinished": "2020-04-17 22:39:44.350",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -715,19 +750,345 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n",
+      "text": "%spark\nimport org.apache.spark.sql.functions._\n\nval taggedSnacks \u003d initialSnacks\n  .withColumn(\"uuid\", concat(col(\"personId\"),col(\"timestamp\")))\n\ntaggedSnacks.printSchema\n\ntaggedSnacks\n  .write\n  .format(\"org.elasticsearch.spark.sql\")\n  .option(\"es.mapping.id\", \"uuid\")\n  .option(\"es.port\", 9200)\n  .option(\"es.nodes\", \"elasticsearch\")\n  .option(\"es.nodes.wan.only\",\"true\")\n  .option(\"es.batch.size.entries\", 100)\n  .option(\"es.batch.size.bytes\", 1024)\n  .option(\"es.batch.write.retry.count\", 3)\n  .option(\"es.batch.write.retry.wait\", \"5s\")\n  .mode(SaveMode.Append)\n  .save(s\"snacks/_doc\")",
       "user": "anonymous",
-      "dateUpdated": "2020-04-17 21:27:41.330",
-      "config": {},
+      "dateUpdated": "2020-04-17 22:42:24.432",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "root\n |-- timestamp: timestamp (nullable \u003d true)\n |-- name: string (nullable \u003d true)\n |-- quantity: integer (nullable \u003d false)\n |-- personId: integer (nullable \u003d false)\n |-- uuid: string (nullable \u003d true)\n\nimport org.apache.spark.sql.functions._\ntaggedSnacks: org.apache.spark.sql.DataFrame \u003d [timestamp: timestamp, name: string ... 3 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587159430892_428041636",
+      "id": "20200417-213710_2037761463",
+      "dateCreated": "2020-04-17 21:37:10.892",
+      "dateStarted": "2020-04-17 22:42:24.482",
+      "dateFinished": "2020-04-17 22:42:25.863",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n\nval snacksFromES \u003d spark.read\n  .format(\"org.elasticsearch.spark.sql\")\n  .option(\"es.port\", 9200)\n  .option(\"es.nodes\", \"elasticsearch\")\n  .option(\"es.nodes.wan.only\",\"true\")\n  .option(\"es.batch.size.entries\", 100)\n  .option(\"es.batch.size.bytes\", 1024)\n  .load(\"snacks/_doc\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 22:47:14.197",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "snacksFromES: org.apache.spark.sql.DataFrame \u003d [name: string, personId: bigint ... 3 more fields]\n"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1587158861329_-1293506657",
       "id": "20200417-212741_861524872",
       "dateCreated": "2020-04-17 21:27:41.329",
-      "status": "READY",
+      "dateStarted": "2020-04-17 22:47:14.237",
+      "dateFinished": "2020-04-17 22:47:14.574",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nsnacksFromES.createOrReplaceTempView(\"snacks_es\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 22:47:24.086",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1587159335128_2088088251",
+      "id": "20200417-213535_558360917",
+      "dateCreated": "2020-04-17 21:35:35.128",
+      "dateStarted": "2020-04-17 22:47:24.123",
+      "dateFinished": "2020-04-17 22:47:24.460",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect * from snacks_es",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 22:47:32.364",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "name": "string",
+                      "personId": "string",
+                      "quantity": "string",
+                      "timestamp": "string",
+                      "uuid": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "name\tpersonId\tquantity\ttimestamp\tuuid\ncake\t102\t28\t2020-04-17 12:50:09.0\t1022020-04-17 12:50:09\nyogurt\t102\t2\t2020-04-17 12:28:53.0\t1022020-04-17 12:28:53\nyogurt\t102\t12\t2020-04-17 12:51:56.0\t1022020-04-17 12:51:56\napple\t102\t18\t2020-04-17 12:46:15.0\t1022020-04-17 12:46:15\ncake\t102\t28\t2020-04-17 12:16:50.0\t1022020-04-17 12:16:50\napple\t102\t30\t2020-04-17 13:01:30.0\t1022020-04-17 13:01:30\nyogurt\t104\t37\t2020-04-17 12:57:51.0\t1042020-04-17 12:57:51\ncake\t104\t29\t2020-04-17 12:18:50.0\t1042020-04-17 12:18:50\nyogurt\t104\t9\t2020-04-17 12:08:53.0\t1042020-04-17 12:08:53\napple\t104\t9\t2020-04-17 12:04:38.0\t1042020-04-17 12:04:38\ncake\t104\t48\t2020-04-17 12:30:35.0\t1042020-04-17 12:30:35\napple\t104\t44\t2020-04-17 12:29:17.0\t1042020-04-17 12:29:17\napple\t100\t0\t2020-04-17 12:00:15.0\t1002020-04-17 12:00:15\nchips\t100\t0\t2020-04-17 12:03:08.0\t1002020-04-17 12:03:08\nbread\t100\t1\t2020-04-17 12:03:56.0\t1002020-04-17 12:03:56\nyogurt\t100\t0\t2020-04-17 12:01:53.0\t1002020-04-17 12:01:53\nyogurt\t100\t2\t2020-04-17 12:04:16.0\t1002020-04-17 12:04:16\napple\t100\t0\t2020-04-17 12:07:39.0\t1002020-04-17 12:07:39\ncake\t100\t0\t2020-04-17 12:02:53.0\t1002020-04-17 12:02:53\napple\t104\t71\t2020-04-17 12:50:53.0\t1042020-04-17 12:50:53\nbread\t104\t32\t2020-04-17 13:00:33.0\t1042020-04-17 13:00:33\ncake\t104\t50\t2020-04-17 12:44:03.0\t1042020-04-17 12:44:03\nchips\t104\t69\t2020-04-17 12:42:11.0\t1042020-04-17 12:42:11\nyogurt\t104\t54\t2020-04-17 14:07:50.0\t1042020-04-17 14:07:50\nyogurt\t104\t37\t2020-04-17 13:59:39.0\t1042020-04-17 13:59:39\napple\t100\t4\t2020-04-17 12:00:28.0\t1002020-04-17 12:00:28\nchips\t100\t4\t2020-04-17 12:09:27.0\t1002020-04-17 12:09:27\napple\t100\t8\t2020-04-17 12:04:52.0\t1002020-04-17 12:04:52\napple\t100\t5\t2020-04-17 12:07:54.0\t1002020-04-17 12:07:54\nbread\t100\t9\t2020-04-17 12:16:27.0\t1002020-04-17 12:16:27\napple\t100\t2\t2020-04-17 12:07:09.0\t1002020-04-17 12:07:09\nchips\t102\t18\t2020-04-17 12:06:15.0\t1022020-04-17 12:06:15\ncake\t102\t6\t2020-04-17 12:45:45.0\t1022020-04-17 12:45:45\napple\t102\t29\t2020-04-17 12:13:49.0\t1022020-04-17 12:13:49\nbread\t104\t48\t2020-04-17 12:54:38.0\t1042020-04-17 12:54:38\nchips\t104\t54\t2020-04-17 12:10:29.0\t1042020-04-17 12:10:29\nbread\t104\t44\t2020-04-17 12:26:53.0\t1042020-04-17 12:26:53\nyogurt\t104\t37\t2020-04-17 13:55:37.0\t1042020-04-17 13:55:37\napple\t104\t74\t2020-04-17 12:08:15.0\t1042020-04-17 12:08:15\ncake\t104\t24\t2020-04-17 12:45:02.0\t1042020-04-17 12:45:02\nbread\t102\t20\t2020-04-17 12:53:37.0\t1022020-04-17 12:53:37\nbread\t102\t43\t2020-04-17 13:16:13.0\t1022020-04-17 13:16:13\nyogurt\t102\t0\t2020-04-17 12:35:22.0\t1022020-04-17 12:35:22\nyogurt\t102\t19\t2020-04-17 12:53:26.0\t1022020-04-17 12:53:26\nbread\t102\t5\t2020-04-17 12:56:33.0\t1022020-04-17 12:56:33\napple\t102\t39\t2020-04-17 12:43:27.0\t1022020-04-17 12:43:27\nchips\t100\t1\t2020-04-17 12:08:59.0\t1002020-04-17 12:08:59\napple\t100\t14\t2020-04-17 12:00:02.0\t1002020-04-17 12:00:02\napple\t100\t6\t2020-04-17 12:11:02.0\t1002020-04-17 12:11:02\ncake\t100\t4\t2020-04-17 12:05:36.0\t1002020-04-17 12:05:36\napple\t100\t14\t2020-04-17 12:19:19.0\t1002020-04-17 12:19:19\napple\t100\t8\t2020-04-17 12:22:32.0\t1002020-04-17 12:22:32\nchips\t104\t35\t2020-04-17 13:02:00.0\t1042020-04-17 13:02:00\nyogurt\t104\t12\t2020-04-17 13:41:32.0\t1042020-04-17 13:41:32\nbread\t104\t64\t2020-04-17 12:06:47.0\t1042020-04-17 12:06:47\nyogurt\t104\t75\t2020-04-17 12:02:09.0\t1042020-04-17 12:02:09\nbread\t102\t21\t2020-04-17 13:06:45.0\t1022020-04-17 13:06:45\nyogurt\t102\t3\t2020-04-17 13:28:02.0\t1022020-04-17 13:28:02\nchips\t102\t46\t2020-04-17 12:43:03.0\t1022020-04-17 12:43:03\nbread\t102\t43\t2020-04-17 13:31:16.0\t1022020-04-17 13:31:16\napple\t102\t23\t2020-04-17 13:26:08.0\t1022020-04-17 13:26:08\ncake\t102\t54\t2020-04-17 12:06:34.0\t1022020-04-17 12:06:34\nbread\t104\t51\t2020-04-17 12:06:04.0\t1042020-04-17 12:06:04\nchips\t104\t6\t2020-04-17 14:27:28.0\t1042020-04-17 14:27:28\nyogurt\t100\t14\t2020-04-17 12:10:46.0\t1002020-04-17 12:10:46\nbread\t100\t6\t2020-04-17 12:02:34.0\t1002020-04-17 12:02:34\nyogurt\t100\t13\t2020-04-17 12:19:13.0\t1002020-04-17 12:19:13\napple\t100\t8\t2020-04-17 12:11:11.0\t1002020-04-17 12:11:11\nchips\t100\t24\t2020-04-17 12:25:00.0\t1002020-04-17 12:25:00\nyogurt\t100\t12\t2020-04-17 12:19:23.0\t1002020-04-17 12:19:23\napple\t104\t60\t2020-04-17 12:01:40.0\t1042020-04-17 12:01:40\ncake\t104\t24\t2020-04-17 14:15:59.0\t1042020-04-17 14:15:59\nyogurt\t102\t45\t2020-04-17 13:03:50.0\t1022020-04-17 13:03:50\nbread\t102\t12\t2020-04-17 13:13:57.0\t1022020-04-17 13:13:57\ncake\t104\t69\t2020-04-17 12:48:31.0\t1042020-04-17 12:48:31\nyogurt\t104\t8\t2020-04-17 12:24:58.0\t1042020-04-17 12:24:58\nbread\t104\t54\t2020-04-17 13:09:48.0\t1042020-04-17 13:09:48\nyogurt\t104\t10\t2020-04-17 14:30:37.0\t1042020-04-17 14:30:37\nbread\t100\t16\t2020-04-17 12:38:07.0\t1002020-04-17 12:38:07\nbread\t100\t17\t2020-04-17 12:22:06.0\t1002020-04-17 12:22:06\nchips\t100\t28\t2020-04-17 12:15:34.0\t1002020-04-17 12:15:34\nbread\t100\t8\t2020-04-17 12:35:12.0\t1002020-04-17 12:35:12\nbread\t100\t11\t2020-04-17 12:50:26.0\t1002020-04-17 12:50:26\ncake\t100\t22\t2020-04-17 12:02:33.0\t1002020-04-17 12:02:33\nbread\t102\t39\t2020-04-17 12:14:54.0\t1022020-04-17 12:14:54\nyogurt\t102\t20\t2020-04-17 13:00:59.0\t1022020-04-17 13:00:59\nyogurt\t102\t35\t2020-04-17 12:05:12.0\t1022020-04-17 12:05:12\ncake\t102\t21\t2020-04-17 12:34:04.0\t1022020-04-17 12:34:04\ncake\t102\t19\t2020-04-17 12:52:31.0\t1022020-04-17 12:52:31\ncake\t102\t62\t2020-04-17 13:27:03.0\t1022020-04-17 13:27:03\nchips\t100\t19\t2020-04-17 12:15:59.0\t1002020-04-17 12:15:59\napple\t100\t3\t2020-04-17 12:14:12.0\t1002020-04-17 12:14:12\ncake\t100\t2\t2020-04-17 12:25:21.0\t1002020-04-17 12:25:21\nbread\t100\t28\t2020-04-17 12:24:22.0\t1002020-04-17 12:24:22\ncake\t100\t2\t2020-04-17 12:34:44.0\t1002020-04-17 12:34:44\napple\t100\t10\t2020-04-17 12:21:18.0\t1002020-04-17 12:21:18\napple\t102\t62\t2020-04-17 13:26:30.0\t1022020-04-17 13:26:30\nyogurt\t102\t33\t2020-04-17 13:14:04.0\t1022020-04-17 13:14:04\nyogurt\t102\t34\t2020-04-17 13:36:39.0\t1022020-04-17 13:36:39\nbread\t102\t34\t2020-04-17 13:34:31.0\t1022020-04-17 13:34:31\ncake\t102\t64\t2020-04-17 13:43:58.0\t1022020-04-17 13:43:58\ncake\t102\t36\t2020-04-17 12:12:08.0\t1022020-04-17 12:12:08\nyogurt\t104\t95\t2020-04-17 13:10:13.0\t1042020-04-17 13:10:13\nchips\t104\t70\t2020-04-17 14:09:09.0\t1042020-04-17 14:09:09\nyogurt\t104\t97\t2020-04-17 13:25:33.0\t1042020-04-17 13:25:33\nbread\t104\t73\t2020-04-17 12:48:54.0\t1042020-04-17 12:48:54\nchips\t105\t0\t2020-04-17 12:00:39.0\t1052020-04-17 12:00:39\ncake\t105\t0\t2020-04-17 12:01:20.0\t1052020-04-17 12:01:20\nchips\t102\t32\t2020-04-17 13:42:56.0\t1022020-04-17 13:42:56\nyogurt\t102\t26\t2020-04-17 13:09:20.0\t1022020-04-17 13:09:20\nyogurt\t100\t12\t2020-04-17 13:03:28.0\t1002020-04-17 13:03:28\nyogurt\t102\t16\t2020-04-17 13:28:33.0\t1022020-04-17 13:28:33\nchips\t100\t15\t2020-04-17 13:03:25.0\t1002020-04-17 13:03:25\nchips\t100\t26\t2020-04-17 12:59:43.0\t1002020-04-17 12:59:43\nbread\t100\t10\t2020-04-17 13:19:26.0\t1002020-04-17 13:19:26\nchips\t102\t49\t2020-04-17 14:16:33.0\t1022020-04-17 14:16:33\nchips\t100\t13\t2020-04-17 12:48:19.0\t1002020-04-17 12:48:19\nchips\t102\t30\t2020-04-17 14:03:35.0\t1022020-04-17 14:03:35\nyogurt\t100\t3\t2020-04-17 12:41:39.0\t1002020-04-17 12:41:39\napple\t100\t14\t2020-04-17 13:33:58.0\t1002020-04-17 13:33:58\napple\t100\t49\t2020-04-17 12:46:32.0\t1002020-04-17 12:46:32\ncake\t100\t7\t2020-04-17 12:30:20.0\t1002020-04-17 12:30:20\napple\t105\t9\t2020-04-17 12:04:04.0\t1052020-04-17 12:04:04\napple\t105\t10\t2020-04-17 12:08:52.0\t1052020-04-17 12:08:52\ncake\t105\t6\t2020-04-17 12:11:51.0\t1052020-04-17 12:11:51\nyogurt\t105\t4\t2020-04-17 12:18:11.0\t1052020-04-17 12:18:11\ncake\t105\t13\t2020-04-17 12:05:53.0\t1052020-04-17 12:05:53\napple\t105\t1\t2020-04-17 12:22:51.0\t1052020-04-17 12:22:51\nbread\t105\t2\t2020-04-17 12:15:42.0\t1052020-04-17 12:15:42\nyogurt\t100\t38\t2020-04-17 12:44:39.0\t1002020-04-17 12:44:39\nbread\t100\t20\t2020-04-17 13:42:27.0\t1002020-04-17 13:42:27\nchips\t100\t17\t2020-04-17 13:18:08.0\t1002020-04-17 13:18:08\nbread\t100\t52\t2020-04-17 13:05:01.0\t1002020-04-17 13:05:01\nbread\t100\t64\t2020-04-17 12:07:55.0\t1002020-04-17 12:07:55\nchips\t100\t22\t2020-04-17 13:24:37.0\t1002020-04-17 13:24:37\nbread\t102\t0\t2020-04-17 13:53:11.0\t1022020-04-17 13:53:11\napple\t103\t0\t2020-04-17 12:01:15.0\t1032020-04-17 12:01:15\napple\t103\t1\t2020-04-17 12:02:34.0\t1032020-04-17 12:02:34\ncake\t103\t2\t2020-04-17 12:02:55.0\t1032020-04-17 12:02:55\napple\t103\t2\t2020-04-17 12:01:49.0\t1032020-04-17 12:01:49\nyogurt\t103\t4\t2020-04-17 12:04:30.0\t1032020-04-17 12:04:30\napple\t103\t1\t2020-04-17 12:01:06.0\t1032020-04-17 12:01:06\ncake\t100\t56\t2020-04-17 12:40:38.0\t1002020-04-17 12:40:38\ncake\t100\t54\t2020-04-17 13:25:35.0\t1002020-04-17 13:25:35\nbread\t100\t70\t2020-04-17 12:14:53.0\t1002020-04-17 12:14:53\nyogurt\t100\t31\t2020-04-17 12:00:48.0\t1002020-04-17 12:00:48\nbread\t100\t44\t2020-04-17 13:35:10.0\t1002020-04-17 13:35:10\nyogurt\t100\t68\t2020-04-17 12:32:13.0\t1002020-04-17 12:32:13\napple\t103\t1\t2020-04-17 12:01:20.0\t1032020-04-17 12:01:20\nbread\t103\t1\t2020-04-17 12:12:20.0\t1032020-04-17 12:12:20\nchips\t103\t9\t2020-04-17 12:03:32.0\t1032020-04-17 12:03:32\nyogurt\t103\t5\t2020-04-17 12:05:42.0\t1032020-04-17 12:05:42\nyogurt\t103\t2\t2020-04-17 12:18:37.0\t1032020-04-17 12:18:37\napple\t103\t4\t2020-04-17 12:17:38.0\t1032020-04-17 12:17:38\nchips\t100\t13\t2020-04-17 12:26:05.0\t1002020-04-17 12:26:05\napple\t100\t75\t2020-04-17 12:18:24.0\t1002020-04-17 12:18:24\ncake\t100\t47\t2020-04-17 12:12:15.0\t1002020-04-17 12:12:15\nchips\t100\t57\t2020-04-17 13:01:46.0\t1002020-04-17 13:01:46\nchips\t100\t24\t2020-04-17 12:28:35.0\t1002020-04-17 12:28:35\nchips\t100\t63\t2020-04-17 13:06:36.0\t1002020-04-17 13:06:36\nbread\t105\t6\t2020-04-17 12:15:24.0\t1052020-04-17 12:15:24\napple\t100\t62\t2020-04-17 13:03:14.0\t1002020-04-17 13:03:14\ncake\t105\t11\t2020-04-17 12:29:08.0\t1052020-04-17 12:29:08\nyogurt\t100\t67\t2020-04-17 12:56:18.0\t1002020-04-17 12:56:18\nchips\t105\t0\t2020-04-17 12:02:52.0\t1052020-04-17 12:02:52\nchips\t100\t62\t2020-04-17 13:47:06.0\t1002020-04-17 13:47:06\nyogurt\t105\t16\t2020-04-17 12:14:03.0\t1052020-04-17 12:14:03\ncake\t100\t52\t2020-04-17 13:55:26.0\t1002020-04-17 13:55:26\napple\t103\t19\t2020-04-17 12:04:07.0\t1032020-04-17 12:04:07\nbread\t100\t29\t2020-04-17 12:00:36.0\t1002020-04-17 12:00:36\nchips\t103\t6\t2020-04-17 12:06:24.0\t1032020-04-17 12:06:24\ncake\t103\t16\t2020-04-17 12:25:10.0\t1032020-04-17 12:25:10\napple\t100\t87\t2020-04-17 13:44:04.0\t1002020-04-17 13:44:04\nyogurt\t100\t63\t2020-04-17 14:20:30.0\t1002020-04-17 14:20:30\nyogurt\t105\t10\t2020-04-17 12:06:23.0\t1052020-04-17 12:06:23\nchips\t105\t14\t2020-04-17 12:02:53.0\t1052020-04-17 12:02:53\nchips\t105\t7\t2020-04-17 12:22:24.0\t1052020-04-17 12:22:24\ncake\t105\t9\t2020-04-17 12:42:46.0\t1052020-04-17 12:42:46\ncake\t105\t3\t2020-04-17 12:08:23.0\t1052020-04-17 12:08:23\nchips\t105\t4\t2020-04-17 12:32:29.0\t1052020-04-17 12:32:29\napple\t105\t28\t2020-04-17 12:01:01.0\t1052020-04-17 12:01:01\nchips\t100\t48\t2020-04-17 13:12:56.0\t1002020-04-17 13:12:56\nchips\t100\t48\t2020-04-17 14:25:13.0\t1002020-04-17 14:25:13\ncake\t100\t48\t2020-04-17 12:00:51.0\t1002020-04-17 12:00:51\ncake\t100\t84\t2020-04-17 13:35:24.0\t1002020-04-17 13:35:24\napple\t100\t8\t2020-04-17 14:30:11.0\t1002020-04-17 14:30:11\nchips\t100\t15\t2020-04-17 12:17:32.0\t1002020-04-17 12:17:32\nchips\t103\t15\t2020-04-17 12:06:54.0\t1032020-04-17 12:06:54\nbread\t105\t6\t2020-04-17 12:09:27.0\t1052020-04-17 12:09:27\nyogurt\t103\t5\t2020-04-17 12:35:48.0\t1032020-04-17 12:35:48\nbread\t105\t5\t2020-04-17 12:02:26.0\t1052020-04-17 12:02:26\nbread\t103\t10\t2020-04-17 12:30:28.0\t1032020-04-17 12:30:28\nbread\t105\t6\t2020-04-17 12:33:37.0\t1052020-04-17 12:33:37\ncake\t103\t27\t2020-04-17 12:06:00.0\t1032020-04-17 12:06:00\napple\t103\t27\t2020-04-17 12:06:59.0\t1032020-04-17 12:06:59\nbread\t103\t20\t2020-04-17 12:34:25.0\t1032020-04-17 12:34:25\nbread\t105\t8\t2020-04-17 12:50:45.0\t1052020-04-17 12:50:45\nchips\t105\t30\t2020-04-17 12:09:56.0\t1052020-04-17 12:09:56\ncake\t105\t4\t2020-04-17 12:50:47.0\t1052020-04-17 12:50:47\nyogurt\t105\t19\t2020-04-17 12:00:46.0\t1052020-04-17 12:00:46\nchips\t100\t87\t2020-04-17 12:23:46.0\t1002020-04-17 12:23:46\nchips\t100\t71\t2020-04-17 12:46:51.0\t1002020-04-17 12:46:51\nbread\t101\t0\t2020-04-17 12:01:04.0\t1012020-04-17 12:01:04\ncake\t101\t0\t2020-04-17 12:03:13.0\t1012020-04-17 12:03:13\ncake\t105\t22\t2020-04-17 12:15:08.0\t1052020-04-17 12:15:08\ncake\t105\t33\t2020-04-17 12:40:41.0\t1052020-04-17 12:40:41\napple\t105\t28\t2020-04-17 13:04:57.0\t1052020-04-17 13:04:57\nbread\t105\t31\t2020-04-17 12:50:10.0\t1052020-04-17 12:50:10\nbread\t105\t8\t2020-04-17 13:04:07.0\t1052020-04-17 13:04:07\nyogurt\t105\t12\t2020-04-17 12:02:33.0\t1052020-04-17 12:02:33\ncake\t101\t1\t2020-04-17 12:04:13.0\t1012020-04-17 12:04:13\nyogurt\t101\t1\t2020-04-17 12:02:29.0\t1012020-04-17 12:02:29\napple\t101\t2\t2020-04-17 12:05:15.0\t1012020-04-17 12:05:15\napple\t103\t18\t2020-04-17 12:52:11.0\t1032020-04-17 12:52:11\nchips\t103\t17\t2020-04-17 12:23:22.0\t1032020-04-17 12:23:22\nchips\t103\t30\t2020-04-17 12:43:44.0\t1032020-04-17 12:43:44\nyogurt\t103\t9\t2020-04-17 12:46:44.0\t1032020-04-17 12:46:44\napple\t103\t33\t2020-04-17 12:39:51.0\t1032020-04-17 12:39:51\ncake\t103\t26\t2020-04-17 12:42:38.0\t1032020-04-17 12:42:38\nchips\t103\t16\t2020-04-17 12:10:47.0\t1032020-04-17 12:10:47\nbread\t103\t22\t2020-04-17 12:37:21.0\t1032020-04-17 12:37:21\nyogurt\t103\t16\t2020-04-17 12:03:03.0\t1032020-04-17 12:03:03\ncake\t103\t8\t2020-04-17 12:12:25.0\t1032020-04-17 12:12:25\nbread\t103\t19\t2020-04-17 12:23:25.0\t1032020-04-17 12:23:25\ncake\t103\t12\t2020-04-17 12:44:13.0\t1032020-04-17 12:44:13\nchips\t105\t6\t2020-04-17 12:27:12.0\t1052020-04-17 12:27:12\nchips\t105\t13\t2020-04-17 12:35:57.0\t1052020-04-17 12:35:57\napple\t105\t32\t2020-04-17 12:30:55.0\t1052020-04-17 12:30:55\nchips\t105\t41\t2020-04-17 12:06:41.0\t1052020-04-17 12:06:41\nchips\t105\t41\t2020-04-17 12:10:06.0\t1052020-04-17 12:10:06\nyogurt\t105\t2\t2020-04-17 13:11:42.0\t1052020-04-17 13:11:42\napple\t101\t4\t2020-04-17 12:05:19.0\t1012020-04-17 12:05:19\ncake\t101\t3\t2020-04-17 12:09:32.0\t1012020-04-17 12:09:32\nbread\t101\t5\t2020-04-17 12:11:07.0\t1012020-04-17 12:11:07\nyogurt\t101\t2\t2020-04-17 12:07:52.0\t1012020-04-17 12:07:52\ncake\t101\t0\t2020-04-17 12:02:16.0\t1012020-04-17 12:02:16\nbread\t101\t2\t2020-04-17 12:09:54.0\t1012020-04-17 12:09:54\nchips\t101\t5\t2020-04-17 12:17:59.0\t1012020-04-17 12:17:59\nchips\t105\t7\t2020-04-17 12:29:57.0\t1052020-04-17 12:29:57\nchips\t105\t41\t2020-04-17 12:46:07.0\t1052020-04-17 12:46:07\nbread\t105\t3\t2020-04-17 12:36:02.0\t1052020-04-17 12:36:02\nchips\t105\t22\t2020-04-17 12:46:52.0\t1052020-04-17 12:46:52\napple\t105\t8\t2020-04-17 12:10:09.0\t1052020-04-17 12:10:09\nbread\t105\t50\t2020-04-17 13:27:55.0\t1052020-04-17 13:27:55\nyogurt\t103\t19\t2020-04-17 13:08:11.0\t1032020-04-17 13:08:11\nyogurt\t103\t40\t2020-04-17 12:53:42.0\t1032020-04-17 12:53:42\nyogurt\t103\t33\t2020-04-17 12:16:35.0\t1032020-04-17 12:16:35\napple\t103\t42\t2020-04-17 13:06:09.0\t1032020-04-17 13:06:09\nyogurt\t103\t34\t2020-04-17 12:44:27.0\t1032020-04-17 12:44:27\nbread\t103\t25\t2020-04-17 12:01:34.0\t1032020-04-17 12:01:34\ncake\t105\t2\t2020-04-17 13:02:28.0\t1052020-04-17 13:02:28\nbread\t103\t47\t2020-04-17 12:44:14.0\t1032020-04-17 12:44:14\nbread\t103\t43\t2020-04-17 13:22:45.0\t1032020-04-17 13:22:45\napple\t103\t24\t2020-04-17 13:23:25.0\t1032020-04-17 13:23:25\nyogurt\t103\t0\t2020-04-17 12:29:24.0\t1032020-04-17 12:29:24\nchips\t103\t51\t2020-04-17 13:06:47.0\t1032020-04-17 13:06:47\nbread\t103\t42\t2020-04-17 12:39:41.0\t1032020-04-17 12:39:41\ncake\t101\t16\t2020-04-17 12:55:37.0\t1012020-04-17 12:55:37\nbread\t105\t48\t2020-04-17 14:14:52.0\t1052020-04-17 14:14:52\ncake\t101\t17\t2020-04-17 12:58:03.0\t1012020-04-17 12:58:03\ncake\t101\t31\t2020-04-17 12:06:49.0\t1012020-04-17 12:06:49\nbread\t105\t36\t2020-04-17 13:15:55.0\t1052020-04-17 13:15:55\nbread\t101\t34\t2020-04-17 12:29:35.0\t1012020-04-17 12:29:35\napple\t105\t68\t2020-04-17 13:14:59.0\t1052020-04-17 13:14:59\napple\t103\t69\t2020-04-17 12:26:19.0\t1032020-04-17 12:26:19\ncake\t106\t1\t2020-04-17 12:02:54.0\t1062020-04-17 12:02:54\ncake\t103\t28\t2020-04-17 12:41:35.0\t1032020-04-17 12:41:35\nyogurt\t106\t3\t2020-04-17 12:07:57.0\t1062020-04-17 12:07:57\nbread\t103\t42\t2020-04-17 12:50:04.0\t1032020-04-17 12:50:04\nyogurt\t103\t10\t2020-04-17 12:36:36.0\t1032020-04-17 12:36:36\ncake\t103\t52\t2020-04-17 13:24:35.0\t1032020-04-17 13:24:35\napple\t106\t2\t2020-04-17 12:09:01.0\t1062020-04-17 12:09:01\ncake\t106\t2\t2020-04-17 12:10:31.0\t1062020-04-17 12:10:31\nbread\t106\t4\t2020-04-17 12:05:11.0\t1062020-04-17 12:05:11\nbread\t106\t0\t2020-04-17 12:11:29.0\t1062020-04-17 12:11:29\napple\t103\t32\t2020-04-17 12:17:49.0\t1032020-04-17 12:17:49\napple\t106\t9\t2020-04-17 12:14:53.0\t1062020-04-17 12:14:53\ncake\t103\t34\t2020-04-17 14:02:04.0\t1032020-04-17 14:02:04\napple\t103\t68\t2020-04-17 12:20:18.0\t1032020-04-17 12:20:18\napple\t103\t86\t2020-04-17 13:58:34.0\t1032020-04-17 13:58:34\nbread\t103\t82\t2020-04-17 13:00:06.0\t1032020-04-17 13:00:06\napple\t106\t8\t2020-04-17 12:00:59.0\t1062020-04-17 12:00:59\napple\t103\t65\t2020-04-17 14:36:32.0\t1032020-04-17 14:36:32\nchips\t106\t6\t2020-04-17 12:19:05.0\t1062020-04-17 12:19:05\nyogurt\t101\t17\t2020-04-17 12:02:36.0\t1012020-04-17 12:02:36\ncake\t101\t12\t2020-04-17 13:29:33.0\t1012020-04-17 13:29:33\nbread\t101\t38\t2020-04-17 12:53:39.0\t1012020-04-17 12:53:39\nyogurt\t101\t37\t2020-04-17 13:01:16.0\t1012020-04-17 13:01:16\nbread\t101\t58\t2020-04-17 13:42:51.0\t1012020-04-17 13:42:51\nchips\t101\t14\t2020-04-17 13:06:48.0\t1012020-04-17 13:06:48\nbread\t106\t3\t2020-04-17 12:00:02.0\t1062020-04-17 12:00:02\nchips\t106\t9\t2020-04-17 12:18:04.0\t1062020-04-17 12:18:04\napple\t106\t6\t2020-04-17 12:17:41.0\t1062020-04-17 12:17:41\nbread\t106\t1\t2020-04-17 12:00:43.0\t1062020-04-17 12:00:43\ncake\t106\t11\t2020-04-17 12:23:13.0\t1062020-04-17 12:23:13\nchips\t106\t11\t2020-04-17 12:19:10.0\t1062020-04-17 12:19:10\nbread\t104\t0\t2020-04-17 12:04:55.0\t1042020-04-17 12:04:55\nchips\t104\t3\t2020-04-17 12:02:44.0\t1042020-04-17 12:02:44\napple\t101\t35\t2020-04-17 13:51:33.0\t1012020-04-17 13:51:33\nyogurt\t101\t61\t2020-04-17 12:34:19.0\t1012020-04-17 12:34:19\napple\t101\t4\t2020-04-17 12:47:30.0\t1012020-04-17 12:47:30\ncake\t101\t17\t2020-04-17 12:40:40.0\t1012020-04-17 12:40:40\nyogurt\t104\t0\t2020-04-17 12:00:29.0\t1042020-04-17 12:00:29\ncake\t101\t57\t2020-04-17 12:45:58.0\t1012020-04-17 12:45:58\nyogurt\t101\t49\t2020-04-17 12:16:36.0\t1012020-04-17 12:16:36\nyogurt\t101\t7\t2020-04-17 12:34:23.0\t1012020-04-17 12:34:23\nchips\t101\t58\t2020-04-17 13:04:52.0\t1012020-04-17 13:04:52\nchips\t101\t13\t2020-04-17 12:53:20.0\t1012020-04-17 12:53:20\nbread\t101\t75\t2020-04-17 12:59:28.0\t1012020-04-17 12:59:28\nbread\t106\t4\t2020-04-17 12:28:32.0\t1062020-04-17 12:28:32\nchips\t106\t7\t2020-04-17 12:28:27.0\t1062020-04-17 12:28:27\napple\t106\t16\t2020-04-17 12:13:35.0\t1062020-04-17 12:13:35\nchips\t106\t9\t2020-04-17 12:20:02.0\t1062020-04-17 12:20:02\nbread\t106\t5\t2020-04-17 12:10:12.0\t1062020-04-17 12:10:12\nyogurt\t106\t4\t2020-04-17 12:21:26.0\t1062020-04-17 12:21:26\nbread\t106\t2\t2020-04-17 12:25:07.0\t1062020-04-17 12:25:07\nbread\t104\t0\t2020-04-17 12:03:29.0\t1042020-04-17 12:03:29\napple\t104\t1\t2020-04-17 12:07:26.0\t1042020-04-17 12:07:26\ncake\t104\t5\t2020-04-17 12:01:38.0\t1042020-04-17 12:01:38\nyogurt\t104\t8\t2020-04-17 12:08:21.0\t1042020-04-17 12:08:21\nbread\t104\t6\t2020-04-17 12:15:23.0\t1042020-04-17 12:15:23\napple\t104\t6\t2020-04-17 12:01:17.0\t1042020-04-17 12:01:17\nbread\t104\t1\t2020-04-17 12:05:44.0\t1042020-04-17 12:05:44\ncake\t106\t26\t2020-04-17 12:36:53.0\t1062020-04-17 12:36:53\napple\t104\t3\t2020-04-17 12:06:41.0\t1042020-04-17 12:06:41\ncake\t104\t8\t2020-04-17 12:16:07.0\t1042020-04-17 12:16:07\ncake\t106\t6\t2020-04-17 12:17:24.0\t1062020-04-17 12:17:24\nchips\t104\t2\t2020-04-17 12:10:23.0\t1042020-04-17 12:10:23\nbread\t106\t8\t2020-04-17 12:31:25.0\t1062020-04-17 12:31:25\napple\t104\t13\t2020-04-17 12:08:19.0\t1042020-04-17 12:08:19\nyogurt\t106\t1\t2020-04-17 12:30:50.0\t1062020-04-17 12:30:50\napple\t104\t8\t2020-04-17 12:03:01.0\t1042020-04-17 12:03:01\ncake\t106\t0\t2020-04-17 12:38:06.0\t1062020-04-17 12:38:06\napple\t106\t23\t2020-04-17 12:30:30.0\t1062020-04-17 12:30:30\nchips\t101\t44\t2020-04-17 13:51:13.0\t1012020-04-17 13:51:13\ncake\t106\t25\t2020-04-17 12:01:15.0\t1062020-04-17 12:01:15\nbread\t101\t26\t2020-04-17 13:47:28.0\t1012020-04-17 13:47:28\nyogurt\t101\t28\t2020-04-17 13:17:35.0\t1012020-04-17 13:17:35\nyogurt\t101\t51\t2020-04-17 12:42:43.0\t1012020-04-17 12:42:43\nbread\t101\t13\t2020-04-17 13:51:02.0\t1012020-04-17 13:51:02\nchips\t101\t7\t2020-04-17 14:18:00.0\t1012020-04-17 14:18:00\nbread\t106\t1\t2020-04-17 12:37:56.0\t1062020-04-17 12:37:56\nbread\t101\t71\t2020-04-17 13:02:38.0\t1012020-04-17 13:02:38\napple\t106\t2\t2020-04-17 12:15:41.0\t1062020-04-17 12:15:41\nyogurt\t101\t41\t2020-04-17 12:57:45.0\t1012020-04-17 12:57:45\napple\t106\t8\t2020-04-17 12:00:19.0\t1062020-04-17 12:00:19\nchips\t106\t21\t2020-04-17 12:44:32.0\t1062020-04-17 12:44:32\nchips\t106\t24\t2020-04-17 12:21:39.0\t1062020-04-17 12:21:39\ncake\t104\t11\t2020-04-17 12:11:20.0\t1042020-04-17 12:11:20\ncake\t104\t10\t2020-04-17 12:08:02.0\t1042020-04-17 12:08:02\napple\t104\t10\t2020-04-17 12:02:24.0\t1042020-04-17 12:02:24\nbread\t106\t14\t2020-04-17 12:03:26.0\t1062020-04-17 12:03:26\napple\t104\t11\t2020-04-17 12:14:09.0\t1042020-04-17 12:14:09\napple\t106\t39\t2020-04-17 12:50:45.0\t1062020-04-17 12:50:45\nbread\t104\t13\t2020-04-17 12:25:14.0\t1042020-04-17 12:25:14\napple\t106\t9\t2020-04-17 12:48:13.0\t1062020-04-17 12:48:13\nbread\t104\t2\t2020-04-17 12:30:17.0\t1042020-04-17 12:30:17\nchips\t106\t22\t2020-04-17 12:31:46.0\t1062020-04-17 12:31:46\nchips\t101\t30\t2020-04-17 13:51:42.0\t1012020-04-17 13:51:42\nchips\t101\t8\t2020-04-17 13:51:15.0\t1012020-04-17 13:51:15\nchips\t106\t6\t2020-04-17 12:46:17.0\t1062020-04-17 12:46:17\nchips\t102\t1\t2020-04-17 12:03:31.0\t1022020-04-17 12:03:31\nbread\t102\t1\t2020-04-17 12:01:59.0\t1022020-04-17 12:01:59\napple\t102\t1\t2020-04-17 12:01:15.0\t1022020-04-17 12:01:15\nbread\t102\t3\t2020-04-17 12:07:10.0\t1022020-04-17 12:07:10\napple\t102\t6\t2020-04-17 12:11:59.0\t1022020-04-17 12:11:59\napple\t102\t4\t2020-04-17 12:06:20.0\t1022020-04-17 12:06:20\nbread\t102\t1\t2020-04-17 12:08:21.0\t1022020-04-17 12:08:21\nchips\t106\t3\t2020-04-17 12:00:50.0\t1062020-04-17 12:00:50\nchips\t106\t31\t2020-04-17 12:42:43.0\t1062020-04-17 12:42:43\nbread\t106\t27\t2020-04-17 13:32:27.0\t1062020-04-17 13:32:27\nyogurt\t106\t42\t2020-04-17 12:40:18.0\t1062020-04-17 12:40:18\nyogurt\t106\t32\t2020-04-17 12:36:13.0\t1062020-04-17 12:36:13\nyogurt\t106\t23\t2020-04-17 12:52:19.0\t1062020-04-17 12:52:19\ncake\t102\t1\t2020-04-17 12:05:08.0\t1022020-04-17 12:05:08\nbread\t102\t2\t2020-04-17 12:11:46.0\t1022020-04-17 12:11:46\nbread\t102\t6\t2020-04-17 12:12:05.0\t1022020-04-17 12:12:05\napple\t102\t12\t2020-04-17 12:16:02.0\t1022020-04-17 12:16:02\napple\t102\t14\t2020-04-17 12:10:03.0\t1022020-04-17 12:10:03\nyogurt\t106\t35\t2020-04-17 13:31:45.0\t1062020-04-17 13:31:45\nchips\t106\t62\t2020-04-17 12:39:46.0\t1062020-04-17 12:39:46\ncake\t106\t58\t2020-04-17 13:44:35.0\t1062020-04-17 13:44:35\nchips\t104\t6\t2020-04-17 12:19:32.0\t1042020-04-17 12:19:32\ncake\t104\t7\t2020-04-17 12:27:14.0\t1042020-04-17 12:27:14\ncake\t104\t24\t2020-04-17 13:03:01.0\t1042020-04-17 13:03:01\nchips\t104\t20\t2020-04-17 12:36:03.0\t1042020-04-17 12:36:03\nyogurt\t104\t13\t2020-04-17 12:05:26.0\t1042020-04-17 12:05:26\nchips\t104\t20\t2020-04-17 13:09:01.0\t1042020-04-17 13:09:01\nyogurt\t102\t2\t2020-04-17 12:22:14.0\t1022020-04-17 12:22:14\nbread\t104\t38\t2020-04-17 12:37:43.0\t1042020-04-17 12:37:43\napple\t104\t34\t2020-04-17 12:54:32.0\t1042020-04-17 12:54:32\nbread\t106\t54\t2020-04-17 12:33:02.0\t1062020-04-17 12:33:02\nyogurt\t102\t14\t2020-04-17 12:41:09.0\t1022020-04-17 12:41:09\ncake\t102\t32\t2020-04-17 12:19:02.0\t1022020-04-17 12:19:02\nbread\t102\t30\t2020-04-17 12:57:25.0\t1022020-04-17 12:57:25\ncake\t100\t2\t2020-04-17 12:14:33.0\t1002020-04-17 12:14:33\nchips\t102\t8\t2020-04-17 12:22:53.0\t1022020-04-17 12:22:53\ncake\t102\t1\t2020-04-17 13:26:26.0\t1022020-04-17 13:26:26\nchips\t102\t22\t2020-04-17 12:50:51.0\t1022020-04-17 12:50:51\nchips\t102\t49\t2020-04-17 13:11:38.0\t1022020-04-17 13:11:38\ncake\t102\t59\t2020-04-17 12:12:01.0\t1022020-04-17 12:12:01\nyogurt\t102\t8\t2020-04-17 13:48:27.0\t1022020-04-17 13:48:27\nchips\t100\t4\t2020-04-17 13:01:37.0\t1002020-04-17 13:01:37\ncake\t102\t4\t2020-04-17 12:07:07.0\t1022020-04-17 12:07:07\nyogurt\t100\t5\t2020-04-17 12:02:19.0\t1002020-04-17 12:02:19\nchips\t102\t77\t2020-04-17 13:39:34.0\t1022020-04-17 13:39:34\nyogurt\t100\t16\t2020-04-17 12:04:48.0\t1002020-04-17 12:04:48\ncake\t102\t5\t2020-04-17 12:59:18.0\t1022020-04-17 12:59:18\nbread\t100\t12\t2020-04-17 12:46:09.0\t1002020-04-17 12:46:09\nbread\t100\t24\t2020-04-17 13:08:20.0\t1002020-04-17 13:08:20\nchips\t102\t31\t2020-04-17 14:10:22.0\t1022020-04-17 14:10:22\nchips\t100\t20\t2020-04-17 12:02:29.0\t1002020-04-17 12:02:29\nbread\t102\t18\t2020-04-17 12:06:14.0\t1022020-04-17 12:06:14\nyogurt\t100\t12\t2020-04-17 12:56:37.0\t1002020-04-17 12:56:37\nchips\t102\t69\t2020-04-17 14:20:01.0\t1022020-04-17 14:20:01\nchips\t105\t2\t2020-04-17 12:01:17.0\t1052020-04-17 12:01:17\nbread\t105\t1\t2020-04-17 12:03:54.0\t1052020-04-17 12:03:54\nyogurt\t105\t0\t2020-04-17 12:00:43.0\t1052020-04-17 12:00:43\ncake\t105\t3\t2020-04-17 12:02:23.0\t1052020-04-17 12:02:23\nchips\t105\t2\t2020-04-17 12:04:59.0\t1052020-04-17 12:04:59\nbread\t105\t1\t2020-04-17 12:00:10.0\t1052020-04-17 12:00:10\napple\t105\t2\t2020-04-17 12:08:09.0\t1052020-04-17 12:08:09\nchips\t102\t32\t2020-04-17 13:08:32.0\t1022020-04-17 13:08:32\nbread\t102\t67\t2020-04-17 13:09:05.0\t1022020-04-17 13:09:05\napple\t102\t47\t2020-04-17 12:01:08.0\t1022020-04-17 12:01:08\napple\t102\t56\t2020-04-17 13:49:30.0\t1022020-04-17 13:49:30\nbread\t102\t0\t2020-04-17 13:17:33.0\t1022020-04-17 13:17:33\ncake\t102\t16\t2020-04-17 14:24:26.0\t1022020-04-17 14:24:26\nchips\t100\t40\t2020-04-17 12:22:39.0\t1002020-04-17 12:22:39\ncake\t100\t23\t2020-04-17 12:31:18.0\t1002020-04-17 12:31:18\nyogurt\t100\t29\t2020-04-17 13:02:33.0\t1002020-04-17 13:02:33\nbread\t100\t20\t2020-04-17 12:06:16.0\t1002020-04-17 12:06:16\napple\t100\t31\t2020-04-17 12:16:19.0\t1002020-04-17 12:16:19\napple\t100\t39\t2020-04-17 12:08:21.0\t1002020-04-17 12:08:21\nbread\t102\t59\t2020-04-17 14:22:33.0\t1022020-04-17 14:22:33\ncake\t100\t53\t2020-04-17 13:07:10.0\t1002020-04-17 13:07:10\nchips\t102\t85\t2020-04-17 12:01:56.0\t1022020-04-17 12:01:56\ncake\t102\t46\t2020-04-17 12:50:28.0\t1022020-04-17 12:50:28\nyogurt\t100\t52\t2020-04-17 12:06:28.0\t1002020-04-17 12:06:28\ncake\t102\t84\t2020-04-17 13:59:02.0\t1022020-04-17 13:59:02\napple\t102\t18\t2020-04-17 12:16:04.0\t1022020-04-17 12:16:04\napple\t102\t63\t2020-04-17 14:17:47.0\t1022020-04-17 14:17:47\ncake\t105\t0\t2020-04-17 12:31:06.0\t1052020-04-17 12:31:06\nbread\t100\t16\t2020-04-17 12:29:48.0\t1002020-04-17 12:29:48\nbread\t105\t7\t2020-04-17 12:15:58.0\t1052020-04-17 12:15:58\napple\t100\t46\t2020-04-17 12:07:22.0\t1002020-04-17 12:07:22\nbread\t105\t1\t2020-04-17 12:12:52.0\t1052020-04-17 12:12:52\ncake\t103\t5\t2020-04-17 12:22:55.0\t1032020-04-17 12:22:55\nchips\t103\t5\t2020-04-17 12:04:25.0\t1032020-04-17 12:04:25\nbread\t103\t9\t2020-04-17 12:19:08.0\t1032020-04-17 12:19:08\nyogurt\t103\t1\t2020-04-17 12:20:49.0\t1032020-04-17 12:20:49\nchips\t103\t4\t2020-04-17 12:09:49.0\t1032020-04-17 12:09:49\ncake\t103\t16\t2020-04-17 12:00:21.0\t1032020-04-17 12:00:21\nbread\t103\t12\t2020-04-17 12:12:35.0\t1032020-04-17 12:12:35\ncake\t100\t73\t2020-04-17 13:38:14.0\t1002020-04-17 13:38:14\nyogurt\t103\t12\t2020-04-17 12:10:45.0\t1032020-04-17 12:10:45\ncake\t100\t87\t2020-04-17 13:05:57.0\t1002020-04-17 13:05:57\ncake\t103\t5\t2020-04-17 12:31:13.0\t1032020-04-17 12:31:13\nbread\t100\t38\t2020-04-17 13:51:24.0\t1002020-04-17 13:51:24\ncake\t103\t23\t2020-04-17 12:38:44.0\t1032020-04-17 12:38:44\nchips\t101\t10\t2020-04-17 12:20:41.0\t1012020-04-17 12:20:41\ncake\t101\t3\t2020-04-17 12:12:43.0\t1012020-04-17 12:12:43\napple\t101\t1\t2020-04-17 12:17:12.0\t1012020-04-17 12:17:12\nyogurt\t101\t14\t2020-04-17 12:14:34.0\t1012020-04-17 12:14:34\nchips\t101\t5\t2020-04-17 12:11:21.0\t1012020-04-17 12:11:21\nchips\t101\t17\t2020-04-17 12:17:39.0\t1012020-04-17 12:17:39\nchips\t105\t37\t2020-04-17 13:06:44.0\t1052020-04-17 13:06:44\nyogurt\t105\t11\t2020-04-17 12:53:12.0\t1052020-04-17 12:53:12\nchips\t105\t43\t2020-04-17 12:21:02.0\t1052020-04-17 12:21:02\napple\t105\t33\t2020-04-17 12:25:42.0\t1052020-04-17 12:25:42\nchips\t105\t12\t2020-04-17 13:26:55.0\t1052020-04-17 13:26:55\nyogurt\t105\t42\t2020-04-17 12:24:32.0\t1052020-04-17 12:24:32\nyogurt\t101\t1\t2020-04-17 12:27:42.0\t1012020-04-17 12:27:42\ncake\t101\t8\t2020-04-17 12:23:34.0\t1012020-04-17 12:23:34\nyogurt\t101\t8\t2020-04-17 12:17:08.0\t1012020-04-17 12:17:08\nchips\t101\t6\t2020-04-17 12:35:51.0\t1012020-04-17 12:35:51\nyogurt\t101\t21\t2020-04-17 12:05:08.0\t1012020-04-17 12:05:08\nyogurt\t101\t3\t2020-04-17 12:27:46.0\t1012020-04-17 12:27:46\ncake\t103\t26\t2020-04-17 13:10:14.0\t1032020-04-17 13:10:14\nchips\t103\t26\t2020-04-17 12:12:33.0\t1032020-04-17 12:12:33\nchips\t103\t18\t2020-04-17 13:12:06.0\t1032020-04-17 13:12:06\nbread\t103\t53\t2020-04-17 12:41:31.0\t1032020-04-17 12:41:31\napple\t103\t14\t2020-04-17 13:15:39.0\t1032020-04-17 13:15:39\nyogurt\t103\t55\t2020-04-17 12:53:46.0\t1032020-04-17 12:53:46\napple\t105\t16\t2020-04-17 12:41:27.0\t1052020-04-17 12:41:27\napple\t105\t40\t2020-04-17 12:48:12.0\t1052020-04-17 12:48:12\nbread\t105\t10\t2020-04-17 13:16:37.0\t1052020-04-17 13:16:37\nchips\t105\t58\t2020-04-17 12:57:22.0\t1052020-04-17 12:57:22\nchips\t105\t66\t2020-04-17 13:05:31.0\t1052020-04-17 13:05:31\nyogurt\t105\t60\t2020-04-17 13:41:51.0\t1052020-04-17 13:41:51\nchips\t103\t9\t2020-04-17 12:52:26.0\t1032020-04-17 12:52:26\nchips\t103\t40\t2020-04-17 12:27:36.0\t1032020-04-17 12:27:36\napple\t103\t15\t2020-04-17 12:15:55.0\t1032020-04-17 12:15:55\nyogurt\t103\t5\t2020-04-17 12:32:11.0\t1032020-04-17 12:32:11\nchips\t103\t18\t2020-04-17 12:05:27.0\t1032020-04-17 12:05:27\nyogurt\t103\t22\t2020-04-17 13:35:36.0\t1032020-04-17 13:35:36\nyogurt\t105\t68\t2020-04-17 13:25:57.0\t1052020-04-17 13:25:57\ncake\t105\t25\t2020-04-17 12:27:08.0\t1052020-04-17 12:27:08\napple\t105\t44\t2020-04-17 12:57:09.0\t1052020-04-17 12:57:09\nyogurt\t105\t36\t2020-04-17 13:21:16.0\t1052020-04-17 13:21:16\nyogurt\t105\t6\t2020-04-17 13:21:12.0\t1052020-04-17 13:21:12\nchips\t105\t14\t2020-04-17 13:16:01.0\t1052020-04-17 13:16:01\napple\t101\t21\t2020-04-17 12:29:09.0\t1012020-04-17 12:29:09\napple\t101\t11\t2020-04-17 12:23:02.0\t1012020-04-17 12:23:02\nyogurt\t101\t6\t2020-04-17 12:02:18.0\t1012020-04-17 12:02:18\napple\t101\t7\t2020-04-17 12:27:44.0\t1012020-04-17 12:27:44\nbread\t101\t11\t2020-04-17 12:02:42.0\t1012020-04-17 12:02:42\ncake\t101\t24\t2020-04-17 12:35:26.0\t1012020-04-17 12:35:26\nbread\t105\t58\t2020-04-17 13:04:46.0\t1052020-04-17 13:04:46\nchips\t105\t13\t2020-04-17 12:22:20.0\t1052020-04-17 12:22:20\nyogurt\t105\t13\t2020-04-17 12:47:33.0\t1052020-04-17 12:47:33\nchips\t105\t40\t2020-04-17 13:58:47.0\t1052020-04-17 13:58:47\nyogurt\t105\t74\t2020-04-17 14:03:47.0\t1052020-04-17 14:03:47\nyogurt\t105\t50\t2020-04-17 13:59:20.0\t1052020-04-17 13:59:20\nbread\t101\t14\t2020-04-17 12:51:10.0\t1012020-04-17 12:51:10\nbread\t101\t20\t2020-04-17 12:15:32.0\t1012020-04-17 12:15:32\napple\t101\t2\t2020-04-17 12:24:40.0\t1012020-04-17 12:24:40\nyogurt\t101\t10\t2020-04-17 12:29:59.0\t1012020-04-17 12:29:59\nbread\t101\t8\t2020-04-17 12:31:40.0\t1012020-04-17 12:31:40\nyogurt\t105\t48\t2020-04-17 13:24:00.0\t1052020-04-17 13:24:00\nyogurt\t105\t5\t2020-04-17 12:27:16.0\t1052020-04-17 12:27:16\napple\t105\t5\t2020-04-17 13:50:49.0\t1052020-04-17 13:50:49\nchips\t105\t64\t2020-04-17 13:48:19.0\t1052020-04-17 13:48:19\napple\t105\t28\t2020-04-17 13:14:23.0\t1052020-04-17 13:14:23\nchips\t105\t68\t2020-04-17 14:14:45.0\t1052020-04-17 14:14:45\nyogurt\t103\t61\t2020-04-17 13:54:05.0\t1032020-04-17 13:54:05\nbread\t103\t1\t2020-04-17 13:29:34.0\t1032020-04-17 13:29:34\nyogurt\t103\t7\t2020-04-17 12:51:22.0\t1032020-04-17 12:51:22\ncake\t103\t31\t2020-04-17 13:01:38.0\t1032020-04-17 13:01:38\nchips\t103\t47\t2020-04-17 12:57:18.0\t1032020-04-17 12:57:18\ncake\t103\t13\t2020-04-17 13:28:21.0\t1032020-04-17 13:28:21\nyogurt\t101\t10\t2020-04-17 12:38:19.0\t1012020-04-17 12:38:19\nbread\t101\t8\t2020-04-17 12:53:23.0\t1012020-04-17 12:53:23\napple\t101\t22\t2020-04-17 12:58:19.0\t1012020-04-17 12:58:19\ncake\t101\t15\t2020-04-17 12:44:30.0\t1012020-04-17 12:44:30\napple\t101\t33\t2020-04-17 12:39:09.0\t1012020-04-17 12:39:09\nbread\t101\t37\t2020-04-17 13:07:46.0\t1012020-04-17 13:07:46\nbread\t103\t46\t2020-04-17 12:46:57.0\t1032020-04-17 12:46:57\nyogurt\t103\t75\t2020-04-17 12:45:05.0\t1032020-04-17 12:45:05\nchips\t103\t18\t2020-04-17 13:46:56.0\t1032020-04-17 13:46:56\ncake\t103\t57\t2020-04-17 14:04:49.0\t1032020-04-17 14:04:49\nchips\t103\t8\t2020-04-17 13:25:27.0\t1032020-04-17 13:25:27\nbread\t103\t70\t2020-04-17 12:53:22.0\t1032020-04-17 12:53:22\nbread\t105\t26\t2020-04-17 13:08:35.0\t1052020-04-17 13:08:35\nchips\t105\t53\t2020-04-17 12:02:46.0\t1052020-04-17 12:02:46\nyogurt\t101\t3\t2020-04-17 12:40:42.0\t1012020-04-17 12:40:42\ncake\t105\t47\t2020-04-17 14:15:47.0\t1052020-04-17 14:15:47\napple\t101\t35\t2020-04-17 12:35:56.0\t1012020-04-17 12:35:56\nyogurt\t105\t35\t2020-04-17 13:28:31.0\t1052020-04-17 13:28:31\napple\t101\t19\t2020-04-17 12:51:01.0\t1012020-04-17 12:51:01\nyogurt\t105\t84\t2020-04-17 12:34:46.0\t1052020-04-17 12:34:46\napple\t101\t19\t2020-04-17 13:19:18.0\t1012020-04-17 13:19:18\nyogurt\t101\t16\t2020-04-17 12:46:13.0\t1012020-04-17 12:46:13\nyogurt\t101\t5\t2020-04-17 12:08:47.0\t1012020-04-17 12:08:47\nyogurt\t101\t7\t2020-04-17 12:43:38.0\t1012020-04-17 12:43:38\nbread\t105\t11\t2020-04-17 12:37:58.0\t1052020-04-17 12:37:58\ncake\t101\t18\t2020-04-17 13:23:45.0\t1012020-04-17 13:23:45\nbread\t105\t43\t2020-04-17 12:17:34.0\t1052020-04-17 12:17:34\nchips\t105\t11\t2020-04-17 13:14:00.0\t1052020-04-17 13:14:00\nbread\t105\t15\t2020-04-17 12:28:10.0\t1052020-04-17 12:28:10\nbread\t103\t55\t2020-04-17 12:59:07.0\t1032020-04-17 12:59:07\napple\t103\t3\t2020-04-17 13:21:10.0\t1032020-04-17 13:21:10\napple\t103\t65\t2020-04-17 12:41:30.0\t1032020-04-17 12:41:30\nchips\t103\t74\t2020-04-17 12:27:46.0\t1032020-04-17 12:27:46\napple\t103\t68\t2020-04-17 12:16:54.0\t1032020-04-17 12:16:54\ncake\t103\t85\t2020-04-17 13:59:16.0\t1032020-04-17 13:59:16\napple\t101\t42\t2020-04-17 12:34:34.0\t1012020-04-17 12:34:34\ncake\t101\t20\t2020-04-17 12:33:17.0\t1012020-04-17 12:33:17\nyogurt\t101\t15\t2020-04-17 12:46:25.0\t1012020-04-17 12:46:25\napple\t101\t4\t2020-04-17 13:19:00.0\t1012020-04-17 13:19:00\nbread\t101\t8\t2020-04-17 12:47:25.0\t1012020-04-17 12:47:25\napple\t101\t6\t2020-04-17 13:34:35.0\t1012020-04-17 13:34:35\nchips\t105\t61\t2020-04-17 12:26:54.0\t1052020-04-17 12:26:54\ncake\t105\t49\t2020-04-17 13:19:44.0\t1052020-04-17 13:19:44\nbread\t106\t0\t2020-04-17 12:01:08.0\t1062020-04-17 12:01:08\nchips\t103\t60\t2020-04-17 13:09:32.0\t1032020-04-17 13:09:32\ncake\t106\t0\t2020-04-17 12:02:19.0\t1062020-04-17 12:02:19\nbread\t106\t0\t2020-04-17 12:02:35.0\t1062020-04-17 12:02:35\ncake\t103\t89\t2020-04-17 13:36:23.0\t1032020-04-17 13:36:23\ncake\t106\t17\t2020-04-17 12:11:23.0\t1062020-04-17 12:11:23\napple\t103\t45\t2020-04-17 12:41:42.0\t1032020-04-17 12:41:42\nyogurt\t104\t0\t2020-04-17 12:00:40.0\t1042020-04-17 12:00:40\nchips\t104\t1\t2020-04-17 12:01:26.0\t1042020-04-17 12:01:26\nchips\t101\t61\t2020-04-17 12:35:12.0\t1012020-04-17 12:35:12\nyogurt\t101\t42\t2020-04-17 12:42:25.0\t1012020-04-17 12:42:25\nbread\t104\t2\t2020-04-17 12:04:20.0\t1042020-04-17 12:04:20\ncake\t101\t51\t2020-04-17 14:01:26.0\t1012020-04-17 14:01:26\ncake\t106\t16\t2020-04-17 12:56:31.0\t1062020-04-17 12:56:31\napple\t101\t50\t2020-04-17 13:48:25.0\t1012020-04-17 13:48:25\nchips\t101\t21\t2020-04-17 12:06:36.0\t1012020-04-17 12:06:36\nchips\t101\t78\t2020-04-17 13:34:42.0\t1012020-04-17 13:34:42\nyogurt\t106\t21\t2020-04-17 12:10:35.0\t1062020-04-17 12:10:35\napple\t106\t8\t2020-04-17 12:50:20.0\t1062020-04-17 12:50:20\nchips\t106\t4\t2020-04-17 12:03:50.0\t1062020-04-17 12:03:50\nchips\t101\t49\t2020-04-17 12:30:16.0\t1012020-04-17 12:30:16\ncake\t101\t36\t2020-04-17 13:38:34.0\t1012020-04-17 13:38:34\ncake\t101\t3\t2020-04-17 12:49:25.0\t1012020-04-17 12:49:25\nyogurt\t101\t9\t2020-04-17 12:45:18.0\t1012020-04-17 12:45:18\nyogurt\t101\t18\t2020-04-17 13:07:21.0\t1012020-04-17 13:07:21\ncake\t101\t0\t2020-04-17 12:53:02.0\t1012020-04-17 12:53:02\nbread\t101\t78\t2020-04-17 14:20:55.0\t1012020-04-17 14:20:55\nyogurt\t106\t38\t2020-04-17 12:33:12.0\t1062020-04-17 12:33:12\nchips\t106\t14\t2020-04-17 12:44:36.0\t1062020-04-17 12:44:36\nbread\t101\t39\t2020-04-17 13:20:49.0\t1012020-04-17 13:20:49\ncake\t106\t31\t2020-04-17 12:36:15.0\t1062020-04-17 12:36:15\nbread\t102\t0\t2020-04-17 12:01:25.0\t1022020-04-17 12:01:25\nchips\t106\t40\t2020-04-17 13:15:10.0\t1062020-04-17 13:15:10\nchips\t102\t1\t2020-04-17 12:01:07.0\t1022020-04-17 12:01:07\ncake\t102\t0\t2020-04-17 12:00:01.0\t1022020-04-17 12:00:01\nyogurt\t104\t12\t2020-04-17 12:34:43.0\t1042020-04-17 12:34:43\napple\t104\t9\t2020-04-17 12:22:29.0\t1042020-04-17 12:22:29\nchips\t104\t22\t2020-04-17 12:25:04.0\t1042020-04-17 12:25:04\nyogurt\t104\t25\t2020-04-17 12:44:29.0\t1042020-04-17 12:44:29\nyogurt\t104\t28\t2020-04-17 12:11:57.0\t1042020-04-17 12:11:57\napple\t104\t20\t2020-04-17 12:10:53.0\t1042020-04-17 12:10:53\nchips\t106\t10\t2020-04-17 12:33:19.0\t1062020-04-17 12:33:19\nbread\t106\t46\t2020-04-17 12:48:53.0\t1062020-04-17 12:48:53\nyogurt\t106\t22\t2020-04-17 13:13:28.0\t1062020-04-17 13:13:28\nbread\t106\t11\t2020-04-17 12:05:03.0\t1062020-04-17 12:05:03\nchips\t106\t15\t2020-04-17 12:52:58.0\t1062020-04-17 12:52:58\napple\t106\t4\t2020-04-17 12:11:31.0\t1062020-04-17 12:11:31\nyogurt\t104\t16\t2020-04-17 12:19:36.0\t1042020-04-17 12:19:36\nbread\t104\t1\t2020-04-17 12:29:00.0\t1042020-04-17 12:29:00\nchips\t104\t27\t2020-04-17 12:14:18.0\t1042020-04-17 12:14:18\nyogurt\t104\t11\t2020-04-17 12:04:23.0\t1042020-04-17 12:04:23\nbread\t104\t30\t2020-04-17 12:42:43.0\t1042020-04-17 12:42:43\ncake\t104\t29\t2020-04-17 12:01:09.0\t1042020-04-17 12:01:09\nbread\t106\t41\t2020-04-17 13:40:11.0\t1062020-04-17 13:40:11\nchips\t106\t29\t2020-04-17 13:10:51.0\t1062020-04-17 13:10:51\nbread\t106\t41\t2020-04-17 13:19:01.0\t1062020-04-17 13:19:01\nyogurt\t102\t11\t2020-04-17 12:05:51.0\t1022020-04-17 12:05:51\nchips\t102\t13\t2020-04-17 12:14:18.0\t1022020-04-17 12:14:18\napple\t104\t22\t2020-04-17 12:28:16.0\t1042020-04-17 12:28:16\nyogurt\t102\t10\t2020-04-17 12:07:27.0\t1022020-04-17 12:07:27\nyogurt\t104\t26\t2020-04-17 13:03:32.0\t1042020-04-17 13:03:32\ncake\t102\t13\t2020-04-17 12:08:10.0\t1022020-04-17 12:08:10\nyogurt\t104\t13\t2020-04-17 12:09:02.0\t1042020-04-17 12:09:02\nbread\t102\t13\t2020-04-17 12:24:33.0\t1022020-04-17 12:24:33\nyogurt\t104\t13\t2020-04-17 12:14:26.0\t1042020-04-17 12:14:26\nchips\t102\t1\t2020-04-17 12:34:33.0\t1022020-04-17 12:34:33\nbread\t106\t56\t2020-04-17 12:19:25.0\t1062020-04-17 12:19:25\nyogurt\t106\t58\t2020-04-17 12:41:26.0\t1062020-04-17 12:41:26\napple\t106\t39\t2020-04-17 13:57:32.0\t1062020-04-17 13:57:32\nyogurt\t106\t36\t2020-04-17 13:08:15.0\t1062020-04-17 13:08:15\nyogurt\t106\t5\t2020-04-17 12:22:10.0\t1062020-04-17 12:22:10\ncake\t106\t70\t2020-04-17 13:50:13.0\t1062020-04-17 13:50:13\nchips\t102\t6\t2020-04-17 12:06:31.0\t1022020-04-17 12:06:31\nyogurt\t102\t13\t2020-04-17 12:05:22.0\t1022020-04-17 12:05:22\napple\t102\t25\t2020-04-17 12:24:21.0\t1022020-04-17 12:24:21\napple\t102\t20\t2020-04-17 12:03:28.0\t1022020-04-17 12:03:28\nyogurt\t102\t21\t2020-04-17 12:33:59.0\t1022020-04-17 12:33:59\napple\t104\t2\t2020-04-17 12:49:39.0\t1042020-04-17 12:49:39\ncake\t104\t40\t2020-04-17 12:23:35.0\t1042020-04-17 12:23:35\ncake\t104\t44\t2020-04-17 12:31:27.0\t1042020-04-17 12:31:27\ncake\t104\t32\t2020-04-17 13:07:28.0\t1042020-04-17 13:07:28\nyogurt\t104\t37\t2020-04-17 12:28:49.0\t1042020-04-17 12:28:49\nbread\t104\t41\t2020-04-17 12:40:25.0\t1042020-04-17 12:40:25\ncake\t104\t5\t2020-04-17 13:10:35.0\t1042020-04-17 13:10:35\napple\t102\t8\t2020-04-17 12:10:49.0\t1022020-04-17 12:10:49\nbread\t102\t20\t2020-04-17 12:13:50.0\t1022020-04-17 12:13:50\ncake\t106\t48\t2020-04-17 13:54:46.0\t1062020-04-17 13:54:46\nyogurt\t102\t13\t2020-04-17 12:18:30.0\t1022020-04-17 12:18:30\nchips\t106\t53\t2020-04-17 13:24:17.0\t1062020-04-17 13:24:17\nbread\t102\t0\t2020-04-17 12:13:59.0\t1022020-04-17 12:13:59\nyogurt\t106\t16\t2020-04-17 12:22:57.0\t1062020-04-17 12:22:57\nyogurt\t106\t79\t2020-04-17 12:13:48.0\t1062020-04-17 12:13:48\ncake\t106\t69\t2020-04-17 13:07:51.0\t1062020-04-17 13:07:51\nyogurt\t106\t27\t2020-04-17 13:24:30.0\t1062020-04-17 13:24:30\napple\t106\t13\t2020-04-17 13:29:18.0\t1062020-04-17 13:29:18\napple\t106\t65\t2020-04-17 13:00:51.0\t1062020-04-17 13:00:51\nchips\t106\t66\t2020-04-17 13:13:06.0\t1062020-04-17 13:13:06\nyogurt\t106\t4\t2020-04-17 12:09:45.0\t1062020-04-17 12:09:45\ncake\t106\t81\t2020-04-17 13:12:52.0\t1062020-04-17 13:12:52\ncake\t106\t30\t2020-04-17 13:17:26.0\t1062020-04-17 13:17:26\nchips\t106\t78\t2020-04-17 12:10:58.0\t1062020-04-17 12:10:58\nyogurt\t106\t79\t2020-04-17 12:21:17.0\t1062020-04-17 12:21:17\nchips\t106\t3\t2020-04-17 13:53:59.0\t1062020-04-17 13:53:59\nyogurt\t106\t24\t2020-04-17 12:31:59.0\t1062020-04-17 12:31:59\nyogurt\t106\t83\t2020-04-17 13:19:25.0\t1062020-04-17 13:19:25\napple\t106\t12\t2020-04-17 12:23:51.0\t1062020-04-17 12:23:51\nbread\t106\t20\t2020-04-17 12:40:08.0\t1062020-04-17 12:40:08\napple\t106\t79\t2020-04-17 14:28:44.0\t1062020-04-17 14:28:44\ncake\t106\t42\t2020-04-17 13:18:39.0\t1062020-04-17 13:18:39\napple\t106\t16\t2020-04-17 13:22:24.0\t1062020-04-17 13:22:24\ncake\t106\t93\t2020-04-17 12:21:02.0\t1062020-04-17 12:21:02\ncake\t106\t29\t2020-04-17 12:49:32.0\t1062020-04-17 12:49:32\napple\t104\t8\t2020-04-17 13:13:27.0\t1042020-04-17 13:13:27\nbread\t104\t27\t2020-04-17 12:19:23.0\t1042020-04-17 12:19:23\nbread\t104\t1\t2020-04-17 12:16:25.0\t1042020-04-17 12:16:25\napple\t104\t56\t2020-04-17 13:29:29.0\t1042020-04-17 13:29:29\nyogurt\t104\t37\t2020-04-17 12:44:48.0\t1042020-04-17 12:44:48\nbread\t104\t50\t2020-04-17 13:01:35.0\t1042020-04-17 13:01:35\nchips\t104\t62\t2020-04-17 12:27:08.0\t1042020-04-17 12:27:08\napple\t104\t37\t2020-04-17 12:07:08.0\t1042020-04-17 12:07:08\napple\t104\t7\t2020-04-17 12:22:54.0\t1042020-04-17 12:22:54\ncake\t104\t45\t2020-04-17 12:19:49.0\t1042020-04-17 12:19:49\n"
+          },
+          {
+            "type": "TEXT",
+            "data": ""
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587159384694_821136521",
+      "id": "20200417-213624_1583410179",
+      "dateCreated": "2020-04-17 21:36:24.694",
+      "dateStarted": "2020-04-17 22:47:32.403",
+      "dateFinished": "2020-04-17 22:47:33.103",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n\nsnacksFromES.groupBy(\"personId\", \"name\").agg(count(col(\"quantity\")) as \"total\").createOrReplaceTempView(\"eating_habits\")",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 22:49:16.231",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1587159394273_619149357",
+      "id": "20200417-213634_2030798583",
+      "dateCreated": "2020-04-17 21:36:34.273",
+      "dateStarted": "2020-04-17 22:49:16.266",
+      "dateFinished": "2020-04-17 22:49:16.765",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect * from eating_habits",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-17 22:50:01.014",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "personId",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {
+                          "priority": 0.0,
+                          "direction": "asc"
+                        },
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "name",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "total",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1.0,
+                      "paginationPageSize": 250.0
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "personId": "string",
+                      "name": "string",
+                      "total": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "personId\tname\ttotal\n104\tapple\t21\n102\tcake\t20\n106\tapple\t18\n104\tbread\t21\n102\tbread\t23\n103\tchips\t19\n100\tcake\t17\n101\tchips\t16\n106\tcake\t20\n104\tcake\t18\n106\tbread\t20\n100\tyogurt\t17\n104\tchips\t14\n105\tcake\t15\n105\tyogurt\t20\n101\tbread\t19\n100\tchips\t24\n105\tchips\t28\n102\tapple\t18\n106\tchips\t22\n103\tcake\t19\n100\tapple\t22\n104\tyogurt\t25\n103\tyogurt\t20\n106\tyogurt\t20\n103\tbread\t18\n100\tbread\t20\n105\tbread\t22\n102\tyogurt\t20\n105\tapple\t15\n101\tapple\t18\n101\tcake\t20\n103\tapple\t23\n101\tyogurt\t26\n102\tchips\t18\n"
+          },
+          {
+            "type": "TEXT",
+            "data": ""
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1587163756231_-685547722",
+      "id": "20200417-224916_593208743",
+      "dateCreated": "2020-04-17 22:49:16.231",
+      "dateStarted": "2020-04-17 22:49:46.426",
+      "dateFinished": "2020-04-17 22:49:49.340",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
   ],
